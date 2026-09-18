@@ -1,0 +1,352 @@
+@import "tailwindcss";
+
+/*
+ * Dark-first brand palette: deep navy ground, turquoise primary, warm orange secondary.
+ * One theme only — the premium look depends on the dark ground, so there is no light variant.
+ */
+:root {
+  color-scheme: dark;
+
+  --background: oklch(0.17 0.032 258);
+  --background-deep: oklch(0.13 0.03 260);
+  --surface: oklch(0.21 0.033 258);
+  --surface-muted: oklch(0.25 0.032 258);
+  --surface-raised: oklch(0.28 0.034 258);
+
+  --foreground: oklch(0.97 0.006 250);
+  --muted-foreground: oklch(0.73 0.022 252);
+  --subtle-foreground: oklch(0.6 0.025 254);
+
+  --border: oklch(0.33 0.03 256);
+  --border-strong: oklch(0.42 0.035 256);
+
+  --primary: oklch(0.79 0.13 190);
+  --primary-hover: oklch(0.86 0.12 190);
+  --primary-deep: oklch(0.63 0.13 195);
+  --primary-foreground: oklch(0.16 0.03 258);
+
+  --accent: oklch(0.78 0.16 55);
+  --accent-deep: oklch(0.66 0.17 48);
+
+  /* Glass surfaces sit on photography, so they are alpha colours. */
+  --glass: color-mix(in oklab, var(--surface) 62%, transparent);
+  --glass-border: color-mix(in oklab, white 14%, transparent);
+  --glass-strong: color-mix(in oklab, var(--surface) 82%, transparent);
+
+  /*
+   * sRGB channels of the colours used inside gradients. Gradient stops must not be
+   * written in oklch(): the build converts them to lab(), and Chrome renders a
+   * lab(... / 0) stop as opaque, which turns every scrim into a solid block.
+   */
+  --scrim-rgb: 1 4 15;
+  --background-rgb: 7 16 29;
+  --primary-rgb: 41 213 205;
+
+  --ring: var(--primary);
+  --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-background-deep: var(--background-deep);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-surface-raised: var(--surface-raised);
+  --color-foreground: var(--foreground);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-subtle-foreground: var(--subtle-foreground);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-deep: var(--primary-deep);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-deep: var(--accent-deep);
+  --color-glass: var(--glass);
+  --color-glass-border: var(--glass-border);
+  --color-glass-strong: var(--glass-strong);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display:
+    var(--font-display), var(--font-inter), ui-sans-serif, sans-serif;
+  --font-accent: var(--font-accent), ui-serif, Georgia, serif;
+
+  --ease-brand: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Motion vocabulary: transform/opacity only, 200-700ms, one shared easing. */
+@keyframes reveal-up {
+  from {
+    transform: translate3d(0, 110%, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fade-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes ken-burns {
+  from {
+    transform: scale(1.06) translate3d(-1%, 0, 0);
+  }
+  to {
+    transform: scale(1.18) translate3d(1.5%, -1.5%, 0);
+  }
+}
+
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0);
+  }
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.82);
+  }
+}
+
+@keyframes scroll-hint {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -6px, 0);
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(0, 10px, 0);
+  }
+}
+
+@keyframes gradient-pan {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes page-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes marquee-x {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@theme {
+  --animate-reveal-up: reveal-up 0.7s var(--ease-out-expo) both;
+  --animate-fade-rise: fade-rise 0.6s var(--ease-out-expo) both;
+  --animate-ken-burns: ken-burns 28s ease-in-out infinite alternate;
+  --animate-float-soft: float-soft 7s ease-in-out infinite;
+  --animate-pulse-dot: pulse-dot 2.4s ease-in-out infinite;
+  --animate-scroll-hint: scroll-hint 2s ease-in-out infinite;
+  --animate-gradient-pan: gradient-pan 7s ease-in-out infinite;
+  --animate-marquee-x: marquee-x 46s linear infinite;
+  --animate-page-fade: page-fade 0.28s var(--ease-out-expo) both;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+
+  /* Prices, ratings and counters must not jitter while they animate. */
+  .tabular,
+  [data-tabular] {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+}
+
+@utility glass-panel {
+  background-color: var(--glass);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+}
+
+/* The turquoise emphasis in headings: a slowly panning gradient, not a flat colour. */
+@utility text-gradient-brand {
+  background-image: linear-gradient(
+    100deg,
+    var(--primary) 0%,
+    oklch(0.88 0.11 176) 28%,
+    var(--primary) 52%,
+    oklch(0.82 0.1 205) 78%,
+    var(--primary) 100%
+  );
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-pan 7s ease-in-out infinite;
+}
+
+/* Masked line reveal used by the hero headline — CSS only, so it needs no JS. */
+@utility reveal-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/*
+ * Scroll reveal. The attribute is only added by JS after mount, so content is
+ * visible when JS never runs and there is no hydration mismatch.
+ */
+@layer base {
+  [data-reveal="hidden"] {
+    opacity: 0;
+    transform: translate3d(0, var(--reveal-y, 20px), 0);
+  }
+
+  [data-reveal="shown"] {
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity 0.6s var(--ease-out-expo) var(--reveal-delay, 0ms),
+      transform 0.6s var(--ease-out-expo) var(--reveal-delay, 0ms);
+  }
+}
+
+/*
+ * Photo scrims and fades.
+ *
+ * Every stop is written in rgb() with an explicit alpha and the same channels:
+ * fading an oklch()/lab() colour to `transparent` (or to a zero-alpha lab stop)
+ * is rendered as an opaque block by Chrome, which hides the photography.
+ */
+@utility hero-scrim {
+  /* Narrow screens: the headline sits over the middle of the photo, so darken evenly. */
+  background-image: linear-gradient(
+    to bottom,
+    rgb(var(--scrim-rgb) / 0.62) 0%,
+    rgb(var(--scrim-rgb) / 0.78) 42%,
+    rgb(var(--background-rgb) / 1) 100%
+  );
+
+  /* Wide screens: text moves to the left column, so the photo stays clear on the right. */
+  @media (width >= 64rem) {
+    background-image:
+      linear-gradient(
+        to right,
+        rgb(var(--scrim-rgb) / 0.92) 0%,
+        rgb(var(--scrim-rgb) / 0.72) 30%,
+        rgb(var(--scrim-rgb) / 0.3) 60%,
+        rgb(var(--scrim-rgb) / 0) 86%
+      ),
+      linear-gradient(
+        to top,
+        rgb(var(--background-rgb) / 1) 0%,
+        rgb(var(--scrim-rgb) / 0.5) 16%,
+        rgb(var(--scrim-rgb) / 0) 40%
+      );
+  }
+}
+
+/** Bottom-up scrim for a photo that carries text, e.g. the tour detail header. */
+@utility photo-scrim {
+  background-image: linear-gradient(
+    to top,
+    rgb(var(--scrim-rgb) / 0.94) 0%,
+    rgb(var(--scrim-rgb) / 0.58) 45%,
+    rgb(var(--scrim-rgb) / 0.26) 100%
+  );
+}
+
+/** Diagonal scrim for the closing call to action. */
+@utility cta-scrim {
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(var(--scrim-rgb) / 0.93) 0%,
+    rgb(var(--scrim-rgb) / 0.74) 45%,
+    rgb(var(--scrim-rgb) / 0.45) 100%
+  );
+}
+
+/** Edge fades for the review marquee. */
+@utility fade-edge-left {
+  background-image: linear-gradient(
+    to right,
+    rgb(var(--background-rgb) / 1) 0%,
+    rgb(var(--background-rgb) / 0) 100%
+  );
+}
+
+@utility fade-edge-right {
+  background-image: linear-gradient(
+    to left,
+    rgb(var(--background-rgb) / 1) 0%,
+    rgb(var(--background-rgb) / 0) 100%
+  );
+}
+
+/** Hairline rule that fades out, used by section eyebrows and hover underlines. */
+@utility rule-fade {
+  background-image: linear-gradient(
+    to right,
+    rgb(var(--primary-rgb) / 0.75) 0%,
+    rgb(var(--primary-rgb) / 0) 100%
+  );
+}

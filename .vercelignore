@@ -1,0 +1,5 @@
+# The booking API is deployed separately (render.yaml). Vercel would otherwise treat
+# every file under api/ as a serverless function.
+api/
+render.yaml
+testsprite_tests/

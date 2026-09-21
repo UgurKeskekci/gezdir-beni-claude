@@ -1,5 +1,6 @@
 # The booking API is deployed separately (render.yaml). Vercel would otherwise treat
-# every file under api/ as a serverless function.
-api/
-render.yaml
-testsprite_tests/
+# every file under the root api/ folder as a serverless function.
+# Leading slashes anchor to the root, so src/lib/api/ stays in.
+/api/
+/render.yaml
+/testsprite_tests/

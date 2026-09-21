@@ -17,6 +17,7 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
     { label: dictionary.nav.tours, href: routes.tours(locale) },
     { label: dictionary.nav.how, href: `/${locale}#how` },
     { label: dictionary.nav.why, href: routes.why(locale) },
+    { label: dictionary.nav.lookup, href: routes.lookup(locale) },
   ];
   const companyLinks = [
     { label: dictionary.footer.about, href: routes.why(locale) },
@@ -30,7 +31,7 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
     >
       <Container className="grid gap-12 py-16 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div>
-          <p className="font-display text-xl font-semibold tracking-tight">
+          <p className="font-display text-primary text-xl font-bold tracking-tight">
             {siteConfig.name}
           </p>
           <p className="text-muted-foreground mt-4 max-w-xs text-sm leading-relaxed">
@@ -43,7 +44,7 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
                 href={item.href}
                 rel="noreferrer noopener"
                 target="_blank"
-                className="border-border text-muted-foreground hover:border-primary/50 hover:text-foreground focus-visible:outline-primary rounded-full border px-3.5 py-1.5 text-xs transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
+                className="border-border bg-surface text-muted-foreground hover:border-primary/50 hover:text-primary focus-visible:outline-primary rounded-full border px-3.5 py-1.5 text-xs transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
               >
                 {item.label}
               </a>

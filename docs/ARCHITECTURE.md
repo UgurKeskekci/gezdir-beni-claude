@@ -20,7 +20,8 @@ This project is a static-first frontend built so that a backend can be added lat
     │   │   └── (site)/         route group: pages sharing header/footer
     │   │       ├── layout.tsx
     │   │       ├── page.tsx    "/tr", "/en"
-    │   │       └── tours/      "/tr/tours" and "/tr/tours/[slug]"
+    │   │       ├── reservations/  "/tr/reservations" — find a booking by reference
+    │   │       └── tours/      "/tr/tours", "/tr/tours/[slug]", "…/[slug]/book"
     │   └── api/                (later) route handlers — see "Backend growth paths"
     ├── i18n/
     │   ├── dictionaries/       tr.ts (reference) and en.ts — ALL user-facing copy
@@ -32,6 +33,10 @@ This project is a static-first frontend built so that a backend can be added lat
     │   ├── layout/             site-header, site-footer, container, shells
     │   └── shared/             composed components used by 2+ features
     ├── features/               one folder per domain feature (see below)
+    │   ├── tours/              catalogue and departures, read from the API
+    │   ├── reservations/       checkout form, reference lookup, booking types
+    │   ├── landing/            hero and the home page sections
+    │   └── testimonials/       reviews (still local data)
     ├── config/
     │   ├── site.ts             site-wide constants: name, description, nav, links
     │   └── env.ts              the ONLY place that reads process.env (zod-validated)
@@ -82,16 +87,47 @@ When the backend arrives, only the body of these functions changes. Pages, compo
 
 1. **No user-facing string is written inside a component.** Every label, heading and sentence comes from `src/i18n/dictionaries/`. `tr.ts` is the reference: `Dictionary = typeof tr`, so a key missing from `en.ts` is a type error.
 2. Adding a language = add its code to `locales` in `src/config/i18n.ts` and a dictionary file. Everything else (routes, sitemap, switcher, static params) follows automatically.
-3. **Domain content** (tour titles, descriptions) is not in the dictionaries — it lives in the feature's `data/` as `LocalizedText` (`{ tr, en }`) and services flatten it to one language: `getTours(locale)`. That mirrors what a backend would return.
+3. **Domain content** (tour titles, descriptions) is not in the dictionaries. The API stores one column per language and returns already-translated strings for `?locale=`, so `getTours(locale)` hands components plain text.
 4. Pages receive `locale` from `params` and pass it down; components never guess the language.
 5. Internal links always go through `src/lib/routes.ts` (`routes.tour(locale, slug)`), so a locale can never be forgotten.
 
+## Where the data comes from
+
+The catalogue, departure dates and bookings all live in the **booking API** (`api/`,
+documented in [API.md](API.md)). The site holds no tour data of its own.
+
+- `src/features/tours/services/` is the only place that calls the API for tours, and
+  `src/features/reservations/services/` the only place for bookings. Components never
+  fetch.
+- **Catalogue text** is cached for 60 seconds. **Seat counts are never cached**
+  (`cache: "no-store"`): a stale `seatsLeft` would walk somebody into a checkout for a
+  seat that is already gone. For the same reason the home page, the tour list, the tour
+  page and checkout are all `force-dynamic`.
+- `npm run build` does **not** need the API running. The sitemap degrades to the locale
+  roots and logs a warning if it cannot reach it.
+- `src/features/tours/data/tours.ts` is no longer read by the site. It survives as the
+  **seed source** for the database — see `api/scripts/export-web-tours.ts`. Change it
+  there, re-export, re-seed.
+
+## Money
+
+Prices cross the wire in **minor units** (kuruş) as `{ amountMinor, currency }`.
+`formatPrice` in `src/lib/format.ts` is the only code that divides by 100. Never put a
+formatted price or a float in a type, a prop or a request body.
+
 ## Theme
 
-The site is **dark only**: the deep navy ground is part of the brand, so there is no
-light variant and `:root` sets `color-scheme: dark`. Colours are semantic tokens
-(`--background`, `--surface`, `--primary`, `--accent`, `--glass`…) mapped into Tailwind
-through `@theme inline`, so a light theme could be added later by redefining the tokens.
+The site is **light only**: a white ground, soft blue-grey section bands
+(`bg-surface-muted`), a bright blue `--primary` and an orange `--accent`; `:root` sets
+`color-scheme: light`. Colours are semantic tokens (`--background`, `--surface`,
+`--primary`, `--accent`, `--glass`…) mapped into Tailwind through `@theme inline`, so a
+dark theme could be added later by redefining the tokens.
+
+- Cards use the `card-soft` utility (white, hairline border, `shadow-card`) and lift on
+  hover with `hover:shadow-card-hover hover:-translate-y-1`.
+- Text on a dark photo scrim uses `text-white` / `text-primary-soft`; the full
+  `--primary` blue is too dark there.
+- Small orange text uses `text-accent-deep` for contrast on white.
 
 Typography: `--font-display` (Plus Jakarta Sans) for headings, `--font-sans` (Inter) for
 body, and `--font-accent` (Instrument Serif, italic) for **one** emphasis phrase per
@@ -152,9 +188,9 @@ src/server/                         server-only code — never imported by clien
 - Feature services switch from `data/` to `api.get(...)` or call `src/server/services` directly from server components.
 - If `output: "export"` was enabled in `next.config.ts`, remove it — static export cannot run route handlers or server actions.
 
-### B. Separate backend (any language, another repo or host)
+### B. Separate backend — **this is what the project uses** (see docs/API.md)
 
-- Set `NEXT_PUBLIC_API_URL` in `.env.local`; `lib/api/client.ts` already prefixes every request with it.
+- The service lives in `api/` and listens on port 4000. Set `NEXT_PUBLIC_API_URL=http://localhost:4000/api` in `.env.local`; `lib/api/client.ts` already prefixes every request with it.
 - Feature services switch to `api.get/post/...`. Put request/response DTO types next to the service or in `types/`.
 - The site can stay fully static if data is fetched at build time, or fetch client-side.
 

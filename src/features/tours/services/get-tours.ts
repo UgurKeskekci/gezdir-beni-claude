@@ -1,51 +1,43 @@
 import type { Locale } from "@/config/i18n";
-import { tours } from "@/features/tours/data/tours";
-import type { Tour, TourEntry } from "@/features/tours/types";
-import { localizeImage } from "@/lib/localize";
-
-function localize(entry: TourEntry, locale: Locale): Tour {
-  return {
-    ...entry,
-    cover: localizeImage(entry.cover, locale),
-    gallery: entry.gallery.map((image) => localizeImage(image, locale)),
-    title: entry.title[locale],
-    destination: entry.destination[locale],
-    country: entry.country[locale],
-    summary: entry.summary[locale],
-    description: entry.description[locale],
-    badge: entry.badge?.[locale],
-    highlights: entry.highlights.map((highlight) => highlight[locale]),
-    included: entry.included.map((item) => item[locale]),
-    itinerary: entry.itinerary.map((day) => ({
-      day: day.day,
-      title: day.title[locale],
-      description: day.description[locale],
-    })),
-  };
-}
+import type { Departure, Tour, TourSummary } from "@/features/tours/types";
+import { api, ApiError } from "@/lib/api/client";
 
 /**
- * The only way the UI reads tours.
- * Backend later: return api.get<Tour[]>(`/tours?locale=${locale}`).
+ * The only way the UI reads tours. Everything comes from the booking API
+ * (see docs/API.md); the catalogue is no longer bundled with the site.
+ *
+ * Catalogue text changes rarely, so it is cached briefly. Seat counts must never be
+ * cached — see `getDepartures`.
  */
-export async function getTours(locale: Locale): Promise<Tour[]> {
-  return tours.map((entry) => localize(entry, locale));
+const CATALOGUE_CACHE = { next: { revalidate: 60 } } as const;
+
+export async function getTours(locale: Locale): Promise<TourSummary[]> {
+  return api.get<TourSummary[]>(`/tours?locale=${locale}`, CATALOGUE_CACHE);
 }
 
 /** The shorter list shown on the home page. */
 export async function getFeaturedTours(
   locale: Locale,
   limit = 3,
-): Promise<Tour[]> {
-  return tours.slice(0, limit).map((entry) => localize(entry, locale));
+): Promise<TourSummary[]> {
+  const tours = await getTours(locale);
+  return tours.slice(0, limit);
 }
 
 export async function getTourBySlug(
   slug: string,
   locale: Locale,
 ): Promise<Tour | null> {
-  const entry = tours.find((tour) => tour.slug === slug);
-  return entry ? localize(entry, locale) : null;
+  try {
+    return await api.get<Tour>(
+      `/tours/${encodeURIComponent(slug)}?locale=${locale}`,
+      CATALOGUE_CACHE,
+    );
+  } catch (error) {
+    // An unknown slug is a 404 page, not a crash.
+    if (error instanceof ApiError && error.status === 404) return null;
+    throw error;
+  }
 }
 
 /** Other tours to show at the bottom of a detail page. */
@@ -53,14 +45,40 @@ export async function getRelatedTours(
   slug: string,
   locale: Locale,
   limit = 3,
-): Promise<Tour[]> {
-  return tours
-    .filter((tour) => tour.slug !== slug)
-    .slice(0, limit)
-    .map((entry) => localize(entry, locale));
+): Promise<TourSummary[]> {
+  const tours = await getTours(locale);
+  return tours.filter((tour) => tour.slug !== slug).slice(0, limit);
 }
 
-/** Every slug, for generateStaticParams. */
+/**
+ * Bookable dates with live availability. Never cached: a stale `seatsLeft` would send
+ * someone into a checkout for a seat that is already gone.
+ */
+export async function getDepartures(slug: string): Promise<Departure[]> {
+  try {
+    return await api.get<Departure[]>(
+      `/tours/${encodeURIComponent(slug)}/departures`,
+      { cache: "no-store" },
+    );
+  } catch (error) {
+    if (error instanceof ApiError && error.status === 404) return [];
+    throw error;
+  }
+}
+
+/**
+ * Slugs for the sitemap. A failure here must not fail the build, so it degrades to an
+ * empty list and says so in the log.
+ */
 export async function getTourSlugs(): Promise<string[]> {
-  return tours.map((tour) => tour.slug);
+  try {
+    const tours = await getTours("tr");
+    return tours.map((tour) => tour.slug);
+  } catch (error) {
+    console.warn(
+      "Sitemap: could not reach the booking API, tour URLs are omitted.",
+      error instanceof Error ? error.message : error,
+    );
+    return [];
+  }
 }

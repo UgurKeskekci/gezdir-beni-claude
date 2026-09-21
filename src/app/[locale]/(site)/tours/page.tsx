@@ -11,9 +11,8 @@ type ToursPageProps = {
   params: Promise<{ locale: string }>;
 };
 
-export function generateStaticParams() {
-  return locales.map((locale) => ({ locale }));
-}
+/** The catalogue comes from the booking API, so this page renders per request. */
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,

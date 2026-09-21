@@ -29,10 +29,10 @@ export function FavoriteButton({
       aria-label={saved ? labelActive : label}
       onClick={() => setSaved((current) => !current)}
       className={cn(
-        "relative z-20 flex size-9 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur",
+        "text-foreground relative z-20 flex size-9 items-center justify-center rounded-full bg-white/85 shadow-sm backdrop-blur",
         "transition-[transform,background-color,color] duration-200 ease-[var(--ease-out-expo)]",
-        "hover:scale-110 hover:bg-black/60 active:scale-95",
-        "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white",
+        "hover:scale-110 hover:bg-white active:scale-95",
+        "focus-visible:outline-primary focus-visible:outline-2 focus-visible:outline-offset-2",
         saved && "text-accent",
         className,
       )}

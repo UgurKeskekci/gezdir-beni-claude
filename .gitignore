@@ -42,3 +42,5 @@ next-env.d.ts
 
 # keep the documented env template
 !.env.example
+testsprite_tests/tmp/
+testsprite_tests/tmp/config.json

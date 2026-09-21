@@ -86,7 +86,7 @@ export function MobileMenu({
               <Link
                 href={routes.home(locale)}
                 onClick={() => setOpen(false)}
-                className="font-display text-lg font-semibold tracking-tight"
+                className="font-display text-primary text-xl font-bold tracking-tight"
               >
                 {siteConfig.name}
               </Link>

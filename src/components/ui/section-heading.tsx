@@ -20,8 +20,8 @@ export function SectionHeading({
 }: SectionHeadingProps) {
   return (
     <div className={cn("max-w-2xl", className)}>
-      <p className="text-primary flex items-center gap-3 text-sm font-medium tracking-wide">
-        <span aria-hidden="true" className="rule-fade h-px w-8" />
+      <p className="bg-primary/10 text-primary inline-flex items-center gap-2 rounded-full px-3.5 py-1 text-sm font-semibold tracking-wide">
+        <span aria-hidden="true" className="bg-primary size-1.5 rounded-full" />
         {eyebrow}
       </p>
 

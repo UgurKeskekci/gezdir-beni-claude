@@ -7,7 +7,7 @@ import type { Locale } from "@/config/i18n";
 import { HeroCards } from "@/features/landing/components/hero-cards";
 import { HeroSearch } from "@/features/landing/components/hero-search";
 import type { Testimonial } from "@/features/testimonials";
-import type { Tour } from "@/features/tours";
+import type { Departure, TourSummary } from "@/features/tours";
 import type { Dictionary } from "@/i18n/types";
 import { routes } from "@/lib/routes";
 import type { LocalizedImage } from "@/types";
@@ -15,9 +15,11 @@ import type { LocalizedImage } from "@/types";
 type HeroProps = {
   locale: Locale;
   image: LocalizedImage;
-  tour: Tour;
+  /** Absent only if the catalogue is empty. */
+  tour?: TourSummary;
+  departure?: Departure;
   testimonial: Testimonial;
-  dictionary: Dictionary["hero"];
+  dictionary: Dictionary;
 };
 
 /** Entrance timing — every value is a CSS animation-delay in ms. */
@@ -28,13 +30,15 @@ export function Hero({
   locale,
   image,
   tour,
+  departure,
   testimonial,
   dictionary,
 }: HeroProps) {
-  const words = dictionary.title.split(" ");
+  const hero = dictionary.hero;
+  const words = hero.title.split(" ");
 
   return (
-    <section className="relative isolate -mt-16 flex min-h-[92svh] flex-col justify-center overflow-hidden pt-28 pb-16 sm:pt-32">
+    <section className="relative isolate flex min-h-[86svh] flex-col justify-center overflow-hidden rounded-b-[2.5rem] pt-16 pb-16 sm:rounded-b-[3.5rem] sm:pt-20">
       {/* Photography: slow Ken Burns drift, plus parallax while the section scrolls by. */}
       <Parallax
         className="absolute inset-x-0 -top-[8%] -z-20 h-[116%]"
@@ -59,15 +63,15 @@ export function Hero({
       <Container size="wide">
         <div className="flex flex-col gap-14 lg:flex-row lg:items-end lg:justify-between lg:gap-10">
           <div className="max-w-2xl">
-            <p className="animate-fade-rise glass-panel inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-xs font-medium text-white/85">
+            <p className="animate-fade-rise glass-panel text-foreground inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-xs font-semibold">
               <span className="bg-accent animate-pulse-dot size-1.5 rounded-full" />
-              {dictionary.badge}
+              {hero.badge}
             </p>
 
             <h1 className="font-display mt-6 text-[2.6rem] leading-[1.06] font-semibold tracking-[-0.02em] text-white sm:text-6xl lg:text-[4.2rem]">
               {/* Each word rides up behind its own mask. CSS only, so it needs no JS. */}
               <span className="sr-only">
-                {dictionary.title} {dictionary.titleAccent}
+                {hero.title} {hero.titleAccent}
               </span>
               <span aria-hidden="true">
                 {words.map((word, index) => (
@@ -90,7 +94,7 @@ export function Hero({
                       animationDelay: `${120 + words.length * WORD_STEP}ms`,
                     }}
                   >
-                    {dictionary.titleAccent}
+                    {hero.titleAccent}
                   </span>
                 </span>
               </span>
@@ -100,7 +104,7 @@ export function Hero({
               className="animate-fade-rise mt-7 max-w-xl text-lg leading-relaxed text-pretty text-white/75"
               style={{ animationDelay: `${AFTER_TITLE}ms` }}
             >
-              {dictionary.description}
+              {hero.description}
             </p>
 
             <div
@@ -108,11 +112,11 @@ export function Hero({
               style={{ animationDelay: `${AFTER_TITLE + 90}ms` }}
             >
               <ButtonLink href={routes.toursAnchor(locale)} size="lg">
-                {dictionary.primaryCta}
+                {hero.primaryCta}
                 <ArrowRightIcon className="size-4 transition-transform duration-300 group-hover/button:translate-x-1" />
               </ButtonLink>
               <ButtonLink href="#how" variant="glass" size="lg">
-                {dictionary.secondaryCta}
+                {hero.secondaryCta}
               </ButtonLink>
             </div>
 
@@ -120,7 +124,7 @@ export function Hero({
               className="animate-fade-rise mt-14 flex flex-wrap gap-x-12 gap-y-6"
               style={{ animationDelay: `${AFTER_TITLE + 180}ms` }}
             >
-              {dictionary.stats.map((stat) => (
+              {hero.stats.map((stat) => (
                 <div key={stat.label}>
                   <dt className="font-display text-3xl font-semibold text-white sm:text-4xl">
                     <CountUp
@@ -140,12 +144,15 @@ export function Hero({
             className="animate-fade-rise hidden lg:block"
             style={{ animationDelay: `${AFTER_TITLE + 260}ms` }}
           >
-            <HeroCards
-              locale={locale}
-              tour={tour}
-              testimonial={testimonial}
-              dictionary={dictionary}
-            />
+            {tour ? (
+              <HeroCards
+                locale={locale}
+                tour={tour}
+                departure={departure}
+                testimonial={testimonial}
+                dictionary={dictionary}
+              />
+            ) : null}
           </div>
         </div>
 
@@ -153,7 +160,7 @@ export function Hero({
           className="animate-fade-rise mt-12"
           style={{ animationDelay: `${AFTER_TITLE + 340}ms` }}
         >
-          <HeroSearch locale={locale} dictionary={dictionary.search} />
+          <HeroSearch locale={locale} dictionary={hero.search} />
         </div>
       </Container>
 
@@ -161,7 +168,7 @@ export function Hero({
         href={routes.toursAnchor(locale)}
         className="absolute inset-x-0 bottom-6 mx-auto hidden w-fit flex-col items-center gap-1 text-[0.7rem] tracking-wide text-white/50 transition-colors hover:text-white/80 sm:flex"
       >
-        {dictionary.scrollHint}
+        {hero.scrollHint}
         <ChevronDownIcon className="animate-scroll-hint size-4" />
       </a>
     </section>

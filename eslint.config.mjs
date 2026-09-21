@@ -9,6 +9,8 @@ const eslintConfig = defineConfig([
   prettier,
   // Override default ignores of eslint-config-next.
   globalIgnores([
+    // The API is a separate project with its own tsconfig and rules.
+    "api/**",
     // Default ignores of eslint-config-next:
     ".next/**",
     "out/**",

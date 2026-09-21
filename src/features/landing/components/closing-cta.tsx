@@ -33,16 +33,16 @@ export function ClosingCta({ locale, image, dictionary }: ClosingCtaProps) {
           />
 
           <div className="px-7 py-16 sm:px-14 sm:py-20 lg:px-20">
-            <p className="text-primary text-sm font-medium tracking-wide">
+            <p className="text-primary-soft text-sm font-semibold tracking-wide">
               {dictionary.eyebrow}
             </p>
             <h2 className="font-display mt-3 max-w-2xl text-3xl leading-[1.12] font-semibold tracking-tight text-balance text-white sm:text-5xl">
               {dictionary.title}{" "}
-              <span className="font-accent text-primary text-[1.08em] font-normal italic">
+              <span className="font-accent text-primary-soft text-[1.08em] font-normal italic">
                 {dictionary.titleAccent}
               </span>
             </h2>
-            <p className="mt-5 max-w-xl leading-relaxed text-pretty text-white/70">
+            <p className="mt-5 max-w-xl leading-relaxed text-pretty text-white/80">
               {dictionary.description}
             </p>
 

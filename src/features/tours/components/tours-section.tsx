@@ -5,12 +5,12 @@ import { ArrowRightIcon } from "@/components/ui/icons";
 import { SectionHeading } from "@/components/ui/section-heading";
 import type { Locale } from "@/config/i18n";
 import { TourCard } from "@/features/tours/components/tour-card";
-import type { Tour } from "@/features/tours/types";
+import type { TourSummary } from "@/features/tours/types";
 import type { Dictionary } from "@/i18n/types";
 import { routes } from "@/lib/routes";
 
 type ToursSectionProps = {
-  tours: Tour[];
+  tours: TourSummary[];
   locale: Locale;
   dictionary: Dictionary["tours"];
 };

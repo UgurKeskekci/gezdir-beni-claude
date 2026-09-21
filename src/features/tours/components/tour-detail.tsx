@@ -15,14 +15,16 @@ import type { Locale } from "@/config/i18n";
 import { siteConfig } from "@/config/site";
 import { PhotoCredit } from "@/features/tours/components/photo-credit";
 import { TourCard } from "@/features/tours/components/tour-card";
-import type { Tour } from "@/features/tours/types";
+import { DeparturePicker } from "@/features/tours/components/departure-picker";
+import type { Departure, Tour, TourSummary } from "@/features/tours/types";
 import type { Dictionary } from "@/i18n/types";
 import { formatNumber, formatPrice } from "@/lib/format";
 import { routes } from "@/lib/routes";
 
 type TourDetailProps = {
   tour: Tour;
-  related: Tour[];
+  related: TourSummary[];
+  departures: Departure[];
   locale: Locale;
   dictionary: Dictionary;
 };
@@ -30,6 +32,7 @@ type TourDetailProps = {
 export function TourDetail({
   tour,
   related,
+  departures,
   locale,
   dictionary,
 }: TourDetailProps) {
@@ -38,17 +41,19 @@ export function TourDetail({
 
   return (
     <article>
-      <header className="relative -mt-16 flex h-[70vh] min-h-[30rem] items-end overflow-hidden">
+      <header className="relative isolate flex h-[62vh] min-h-[28rem] items-end overflow-hidden rounded-b-[2.5rem] sm:rounded-b-[3.5rem]">
         <div className="animate-ken-burns absolute inset-0 -z-20">
-          <Photo
-            image={tour.cover}
-            decorative
-            fill
-            preload
-            fetchPriority="high"
-            sizes="100vw"
-            className="object-cover"
-          />
+          {tour.cover ? (
+            <Photo
+              image={tour.cover}
+              decorative
+              fill
+              preload
+              fetchPriority="high"
+              sizes="100vw"
+              className="object-cover"
+            />
+          ) : null}
         </div>
         <div
           aria-hidden="true"
@@ -57,12 +62,12 @@ export function TourDetail({
 
         <Container size="wide" className="relative pb-14">
           <div className="animate-fade-rise flex flex-wrap items-center gap-2">
-            <span className="glass-panel inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium text-white">
+            <span className="glass-panel text-foreground inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold">
               <PinIcon className="size-3.5" />
               {tour.destination}, {tour.country}
             </span>
             {tour.badge ? (
-              <Badge className="border-transparent bg-white/90 text-neutral-900">
+              <Badge className="bg-accent border-transparent text-white">
                 {tour.badge}
               </Badge>
             ) : null}
@@ -122,7 +127,7 @@ export function TourDetail({
                 {tour.highlights.map((highlight) => (
                   <li
                     key={highlight}
-                    className="border-border bg-surface rounded-full border px-3.5 py-1.5 text-sm"
+                    className="bg-primary/8 text-primary rounded-full px-3.5 py-1.5 text-sm font-medium"
                   >
                     {highlight}
                   </li>
@@ -177,7 +182,7 @@ export function TourDetail({
                 <div className="mt-8 grid gap-4 sm:grid-cols-2">
                   {tour.gallery.map((image, index) => (
                     <Reveal as="figure" key={image.url} delay={index * 80}>
-                      <div className="border-border group relative aspect-4/3 overflow-hidden rounded-2xl border">
+                      <div className="shadow-card group relative aspect-4/3 overflow-hidden rounded-3xl">
                         <Photo
                           image={image}
                           fill
@@ -200,37 +205,45 @@ export function TourDetail({
           <Reveal
             as="aside"
             distance={12}
-            className="border-border bg-surface rounded-3xl border p-6 lg:sticky lg:top-24"
+            className="card-soft rounded-3xl p-6 lg:sticky lg:top-24"
           >
             <p
-              className="font-display text-3xl font-semibold tracking-tight"
+              className="font-display text-primary text-3xl font-bold tracking-tight"
               data-tabular
             >
-              {formatPrice(tour.price.amount, tour.price.currency, locale)}
+              {formatPrice(tour.price.amountMinor, tour.price.currency, locale)}
             </p>
             <p className="text-muted-foreground mt-1.5 text-sm">
               {detail.priceNote}
             </p>
 
+            <h2 className="border-border mt-6 border-t pt-6 text-sm font-semibold">
+              {dictionary.departures.title}
+            </h2>
+            <div className="mt-4">
+              <DeparturePicker
+                slug={tour.slug}
+                departures={departures}
+                locale={locale}
+                dictionary={dictionary.departures}
+              />
+            </div>
+
             <ButtonLink
-              href={`mailto:${siteConfig.contact.email}?subject=${encodeURIComponent(tour.title)}`}
+              href={routes.book(locale, tour.slug)}
               size="lg"
-              className="mt-6 w-full"
+              className="mt-5 w-full"
             >
               {detail.book}
               <ArrowRightIcon className="size-4 transition-transform duration-300 group-hover/button:translate-x-1" />
             </ButtonLink>
             <ButtonLink
-              href={routes.contact(locale)}
+              href={`mailto:${siteConfig.contact.email}?subject=${encodeURIComponent(tour.title)}`}
               variant="secondary"
               className="mt-3 w-full"
             >
               {detail.askQuestion}
             </ButtonLink>
-
-            <p className="text-subtle-foreground mt-4 text-center text-xs">
-              {detail.dates}
-            </p>
 
             <h2 className="border-border mt-7 border-t pt-6 text-sm font-semibold">
               {detail.included}
@@ -245,7 +258,7 @@ export function TourDetail({
             </ul>
 
             <PhotoCredit
-              credit={tour.cover.credit}
+              credit={tour.cover?.credit}
               label={detail.photoBy}
               className="text-subtle-foreground border-border mt-6 border-t pt-4 text-xs"
             />
@@ -254,7 +267,7 @@ export function TourDetail({
       </Container>
 
       {related.length > 0 ? (
-        <section className="border-border bg-surface-muted/40 border-t py-20">
+        <section className="bg-surface-muted py-20">
           <Container size="wide">
             <Reveal>
               <h2 className="font-display text-2xl font-semibold tracking-tight">

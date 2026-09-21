@@ -1,46 +1,49 @@
 @import "tailwindcss";
 
 /*
- * Dark-first brand palette: deep navy ground, turquoise primary, warm orange secondary.
- * One theme only — the premium look depends on the dark ground, so there is no light variant.
+ * Light brand palette: white ground, soft blue-grey section bands, a bright blue
+ * primary and a warm orange secondary. One theme only; the tokens are semantic, so a
+ * dark variant could be added later by redefining them.
  */
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 
-  --background: oklch(0.17 0.032 258);
-  --background-deep: oklch(0.13 0.03 260);
-  --surface: oklch(0.21 0.033 258);
-  --surface-muted: oklch(0.25 0.032 258);
-  --surface-raised: oklch(0.28 0.034 258);
+  --background: oklch(1 0 0);
+  --background-deep: oklch(0.972 0.012 250);
+  --surface: oklch(1 0 0);
+  --surface-muted: oklch(0.972 0.014 250);
+  --surface-raised: oklch(0.945 0.024 252);
 
-  --foreground: oklch(0.97 0.006 250);
-  --muted-foreground: oklch(0.73 0.022 252);
-  --subtle-foreground: oklch(0.6 0.025 254);
+  --foreground: oklch(0.24 0.04 262);
+  --muted-foreground: oklch(0.46 0.03 258);
+  --subtle-foreground: oklch(0.57 0.025 258);
 
-  --border: oklch(0.33 0.03 256);
-  --border-strong: oklch(0.42 0.035 256);
+  --border: oklch(0.925 0.016 252);
+  --border-strong: oklch(0.86 0.025 252);
 
-  --primary: oklch(0.79 0.13 190);
-  --primary-hover: oklch(0.86 0.12 190);
-  --primary-deep: oklch(0.63 0.13 195);
-  --primary-foreground: oklch(0.16 0.03 258);
+  --primary: oklch(0.56 0.21 258);
+  --primary-hover: oklch(0.5 0.21 260);
+  --primary-deep: oklch(0.45 0.19 262);
+  --primary-foreground: oklch(1 0 0);
+  /* Primary for text on a dark photo scrim, where the full blue is too dark. */
+  --primary-soft: oklch(0.84 0.1 238);
 
-  --accent: oklch(0.78 0.16 55);
-  --accent-deep: oklch(0.66 0.17 48);
+  --accent: oklch(0.62 0.18 46);
+  --accent-deep: oklch(0.54 0.17 42);
 
   /* Glass surfaces sit on photography, so they are alpha colours. */
-  --glass: color-mix(in oklab, var(--surface) 62%, transparent);
-  --glass-border: color-mix(in oklab, white 14%, transparent);
-  --glass-strong: color-mix(in oklab, var(--surface) 82%, transparent);
+  --glass: color-mix(in oklab, white 84%, transparent);
+  --glass-border: color-mix(in oklab, white 65%, transparent);
+  --glass-strong: color-mix(in oklab, white 94%, transparent);
 
   /*
    * sRGB channels of the colours used inside gradients. Gradient stops must not be
    * written in oklch(): the build converts them to lab(), and Chrome renders a
    * lab(... / 0) stop as opaque, which turns every scrim into a solid block.
    */
-  --scrim-rgb: 1 4 15;
-  --background-rgb: 7 16 29;
-  --primary-rgb: 41 213 205;
+  --scrim-rgb: 8 22 48;
+  --background-rgb: 255 255 255;
+  --primary-rgb: 20 99 243;
 
   --ring: var(--primary);
   --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
@@ -61,6 +64,7 @@
   --color-primary-hover: var(--primary-hover);
   --color-primary-deep: var(--primary-deep);
   --color-primary-foreground: var(--primary-foreground);
+  --color-primary-soft: var(--primary-soft);
   --color-accent: var(--accent);
   --color-accent-deep: var(--accent-deep);
   --color-glass: var(--glass);
@@ -73,6 +77,12 @@
   --font-accent: var(--font-accent), ui-serif, Georgia, serif;
 
   --ease-brand: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Soft, blue-tinted card elevation (`shadow-card`, `shadow-card-hover`). */
+  --shadow-card:
+    0 1px 2px rgb(16 40 90 / 0.04), 0 10px 28px -14px rgb(16 40 90 / 0.14);
+  --shadow-card-hover:
+    0 2px 4px rgb(16 40 90 / 0.05), 0 24px 48px -22px rgb(20 99 243 / 0.38);
 }
 
 /* Motion vocabulary: transform/opacity only, 200-700ms, one shared easing. */
@@ -204,6 +214,13 @@
   }
 }
 
+/** The standard card: white, hairline border, soft blue-tinted shadow. */
+@utility card-soft {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-card);
+}
+
 @utility glass-panel {
   background-color: var(--glass);
   border: 1px solid var(--glass-border);
@@ -211,15 +228,15 @@
   -webkit-backdrop-filter: blur(16px) saturate(140%);
 }
 
-/* The turquoise emphasis in headings: a slowly panning gradient, not a flat colour. */
+/* The hero emphasis over the photo: a slowly panning light-blue gradient. */
 @utility text-gradient-brand {
   background-image: linear-gradient(
     100deg,
-    var(--primary) 0%,
-    oklch(0.88 0.11 176) 28%,
-    var(--primary) 52%,
-    oklch(0.82 0.1 205) 78%,
-    var(--primary) 100%
+    var(--primary-soft) 0%,
+    oklch(0.94 0.05 215) 28%,
+    var(--primary-soft) 52%,
+    oklch(0.9 0.07 200) 78%,
+    var(--primary-soft) 100%
   );
   background-size: 220% 100%;
   -webkit-background-clip: text;
@@ -279,11 +296,12 @@
  */
 @utility hero-scrim {
   /* Narrow screens: the headline sits over the middle of the photo, so darken evenly. */
+  /* The hero is a rounded photo panel on the white page, so it stays dark to its edge. */
   background-image: linear-gradient(
     to bottom,
-    rgb(var(--scrim-rgb) / 0.62) 0%,
-    rgb(var(--scrim-rgb) / 0.78) 42%,
-    rgb(var(--background-rgb) / 1) 100%
+    rgb(var(--scrim-rgb) / 0.55) 0%,
+    rgb(var(--scrim-rgb) / 0.7) 45%,
+    rgb(var(--scrim-rgb) / 0.78) 100%
   );
 
   /* Wide screens: text moves to the left column, so the photo stays clear on the right. */
@@ -291,16 +309,16 @@
     background-image:
       linear-gradient(
         to right,
-        rgb(var(--scrim-rgb) / 0.92) 0%,
-        rgb(var(--scrim-rgb) / 0.72) 30%,
-        rgb(var(--scrim-rgb) / 0.3) 60%,
+        rgb(var(--scrim-rgb) / 0.82) 0%,
+        rgb(var(--scrim-rgb) / 0.6) 30%,
+        rgb(var(--scrim-rgb) / 0.22) 60%,
         rgb(var(--scrim-rgb) / 0) 86%
       ),
       linear-gradient(
         to top,
-        rgb(var(--background-rgb) / 1) 0%,
-        rgb(var(--scrim-rgb) / 0.5) 16%,
-        rgb(var(--scrim-rgb) / 0) 40%
+        rgb(var(--scrim-rgb) / 0.6) 0%,
+        rgb(var(--scrim-rgb) / 0.25) 22%,
+        rgb(var(--scrim-rgb) / 0) 45%
       );
   }
 }

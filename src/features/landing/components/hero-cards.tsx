@@ -2,48 +2,66 @@ import { StarIcon } from "@/components/ui/icons";
 import { Photo } from "@/components/ui/photo";
 import type { Locale } from "@/config/i18n";
 import type { Testimonial } from "@/features/testimonials";
-import type { Tour } from "@/features/tours";
+import type { Departure, TourSummary } from "@/features/tours";
 import type { Dictionary } from "@/i18n/types";
+import { formatDate, formatNumber } from "@/lib/format";
 import { routes } from "@/lib/routes";
 
 type HeroCardsProps = {
   locale: Locale;
-  tour: Tour;
+  tour: TourSummary;
+  /** The next real departure, when the API has one. */
+  departure?: Departure;
   testimonial: Testimonial;
-  dictionary: Dictionary["hero"];
+  dictionary: Dictionary;
 };
 
 /** Two glass cards that drift slowly beside the headline. */
 export function HeroCards({
   locale,
   tour,
+  departure,
   testimonial,
   dictionary,
 }: HeroCardsProps) {
+  const hero = dictionary.hero;
+
   return (
     <div className="flex w-full max-w-sm flex-col gap-4">
       <a
-        href={routes.tour(locale, tour.slug)}
+        href={
+          departure
+            ? routes.book(locale, tour.slug, departure.id)
+            : routes.tour(locale, tour.slug)
+        }
         className="glass-panel animate-float-soft group flex items-center gap-4 rounded-3xl p-3 transition-transform duration-300 hover:-translate-y-1"
       >
         <span className="relative size-16 shrink-0 overflow-hidden rounded-2xl">
-          <Photo
-            image={tour.cover}
-            decorative
-            fill
-            sizes="64px"
-            className="object-cover transition-transform duration-500 group-hover:scale-110"
-          />
+          {tour.cover ? (
+            <Photo
+              image={tour.cover}
+              decorative
+              fill
+              sizes="64px"
+              className="object-cover transition-transform duration-500 group-hover:scale-110"
+            />
+          ) : null}
         </span>
         <span className="min-w-0">
           <span className="text-primary block text-[0.7rem] font-semibold tracking-wide uppercase">
-            {dictionary.departureCard.eyebrow}
+            {hero.departureCard.eyebrow}
           </span>
-          <span className="mt-0.5 block truncate text-sm font-medium text-white">
+          <span className="text-foreground mt-0.5 block truncate text-sm font-semibold">
             {tour.title}
           </span>
-          <span className="text-accent mt-1 block text-xs">
-            {dictionary.departureCard.date} · {dictionary.departureCard.spots}
+          {/* Real date and real availability, straight from the booking API. */}
+          <span
+            className="text-accent-deep mt-1 block text-xs font-medium"
+            data-tabular
+          >
+            {departure
+              ? `${formatDate(departure.departsOn, locale)} · ${dictionary.departures.lastSeats} ${formatNumber(departure.seatsLeft, locale)} ${dictionary.departures.seatsLeft}`
+              : hero.departureCard.soon}
           </span>
         </span>
       </a>
@@ -54,7 +72,7 @@ export function HeroCards({
       >
         <div className="flex items-center justify-between">
           <span className="text-primary text-[0.7rem] font-semibold tracking-wide uppercase">
-            {dictionary.reviewCard.eyebrow}
+            {hero.reviewCard.eyebrow}
           </span>
           <span className="flex gap-0.5" aria-hidden="true">
             {Array.from({ length: testimonial.rating }).map((_, index) => (
@@ -62,10 +80,10 @@ export function HeroCards({
             ))}
           </span>
         </div>
-        <blockquote className="mt-3 line-clamp-3 text-sm leading-relaxed text-white/85">
+        <blockquote className="text-foreground/85 mt-3 line-clamp-3 text-sm leading-relaxed">
           {testimonial.quote}
         </blockquote>
-        <figcaption className="mt-3 text-xs text-white/55">
+        <figcaption className="text-muted-foreground mt-3 text-xs">
           {testimonial.author} · {testimonial.context}
         </figcaption>
       </figure>

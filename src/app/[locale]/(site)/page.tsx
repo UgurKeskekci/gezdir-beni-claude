@@ -7,6 +7,7 @@ import {
   getHeroImage,
   Hero,
   HowItWorks,
+  LookupSection,
   WhyUs,
 } from "@/features/landing";
 import {
@@ -14,8 +15,15 @@ import {
   getTestimonials,
   TestimonialsSection,
 } from "@/features/testimonials";
-import { getFeaturedTours, ToursSection } from "@/features/tours";
+import {
+  getDepartures,
+  getFeaturedTours,
+  ToursSection,
+} from "@/features/tours";
 import { getDictionary } from "@/i18n/get-dictionary";
+
+/** Seat counts are live, so the home page is rendered per request. */
+export const dynamic = "force-dynamic";
 
 export default async function HomePage({
   params,
@@ -41,14 +49,21 @@ export default async function HomePage({
     getFeaturedTestimonial(locale),
   ]);
 
+  const featured = tours[0];
+  // The hero card advertises the next real departure of the first featured tour.
+  const nextDeparture = featured
+    ? (await getDepartures(featured.slug))[0]
+    : undefined;
+
   return (
     <>
       <Hero
         locale={locale}
         image={heroImage}
-        tour={tours[0]}
+        tour={featured}
+        departure={nextDeparture}
         testimonial={heroTestimonial}
-        dictionary={dictionary.hero}
+        dictionary={dictionary}
       />
       <ToursSection
         tours={tours}
@@ -61,6 +76,7 @@ export default async function HomePage({
         testimonials={testimonials}
         dictionary={dictionary.testimonials}
       />
+      <LookupSection locale={locale} dictionary={dictionary} />
       <ClosingCta
         locale={locale}
         image={closingImage}

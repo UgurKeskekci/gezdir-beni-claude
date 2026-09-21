@@ -1,4 +1,4 @@
-import type { ImageCredit } from "@/types";
+type Credit = { author: string; license: string; source: string };
 
 /** Wikimedia Commons photos are CC licensed and must keep their attribution. */
 export function PhotoCredit({
@@ -6,10 +6,12 @@ export function PhotoCredit({
   label,
   className,
 }: {
-  credit: ImageCredit;
+  credit: Credit | undefined;
   label: string;
   className?: string;
 }) {
+  if (!credit) return null;
+
   return (
     <p className={className}>
       {label}:{" "}

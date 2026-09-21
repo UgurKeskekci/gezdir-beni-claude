@@ -1,0 +1,647 @@
+[
+  {
+    "id": "TC001",
+    "title": "Complete guest checkout by paying now",
+    "description": "A guest can select a departure, enter booking details, pay by card now, and receive a booking confirmation.",
+    "category": "Guest checkout",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /tr/tours/kapadokya-balon-rotasi/book"
+      },
+      {
+        "type": "action",
+        "description": "Select a departure date"
+      },
+      {
+        "type": "action",
+        "description": "Select the number of travellers"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the full name field with Guest Booker"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the e-mail field with guest@example.com"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the phone field with a valid phone number"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the billing address fields with valid address details"
+      },
+      {
+        "type": "action",
+        "description": "Select the pay now payment option"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the card details with the prefilled test card information"
+      },
+      {
+        "type": "action",
+        "description": "Submit the booking form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a booking confirmation is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a booking reference is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC002",
+    "title": "Open the site in Turkish",
+    "description": "A visitor can open the site from the root path and land on the Turkish home page.",
+    "category": "Browse tours",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the Turkish home page is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC003",
+    "title": "Recover a booking with matching reference and email",
+    "description": "This verifies that a returning guest can find the correct reservation by entering both the booking reference and the booking email and see the matching summary.",
+    "category": "Booking lookup by reference",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /tr/reservations"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the booking reference field with a valid booking reference"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the booking email field with the email used for that booking"
+      },
+      {
+        "type": "action",
+        "description": "Search for the reservation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the matching reservation summary is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC004",
+    "title": "Start checkout with a selected departure date",
+    "description": "A visitor can choose a departure from a tour page and reach checkout with that departure preselected.",
+    "category": "Tour detail and departure dates",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /tr/tours"
+      },
+      {
+        "type": "action",
+        "description": "Click a tour card"
+      },
+      {
+        "type": "action",
+        "description": "Click a departure selection control"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the checkout page is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the chosen departure is preselected in checkout"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC005",
+    "title": "Recover an existing reservation",
+    "description": "A returning guest can look up a reservation with a reference code and booking e-mail and see the reservation details.",
+    "category": "Guest checkout",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /tr/reservations"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the reservation reference field with a valid reference"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the booking e-mail field with the matching e-mail"
+      },
+      {
+        "type": "action",
+        "description": "Submit the reservation lookup form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the reservation details are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the booking summary is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC006",
+    "title": "Browse featured tours and open the full catalogue",
+    "description": "A visitor can view featured tours on the home page and reach the full tour catalogue to compare tour cards.",
+    "category": "Browse tours",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /tr"
+      },
+      {
+        "type": "action",
+        "description": "Click the link to view all tours"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the full tour catalogue is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify multiple tour cards are displayed for comparison"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC007",
+    "title": "Complete guest checkout by holding the seat",
+    "description": "A guest can select a departure, enter booking details, hold the seat, and receive a pending confirmation summary.",
+    "category": "Guest checkout",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /tr/tours/kapadokya-balon-rotasi/book"
+      },
+      {
+        "type": "action",
+        "description": "Select a departure date"
+      },
+      {
+        "type": "action",
+        "description": "Select the number of travellers"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the full name field with Guest Booker"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the e-mail field with guest@example.com"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the phone field with a valid phone number"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the billing address fields with valid address details"
+      },
+      {
+        "type": "action",
+        "description": "Select the hold the seat payment option"
+      },
+      {
+        "type": "action",
+        "description": "Submit the booking form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a pending booking confirmation is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a booking reference is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC008",
+    "title": "Open a tour detail page from browsing",
+    "description": "A visitor can open a tour card and reach the corresponding tour detail page.",
+    "category": "Browse tours",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /tr"
+      },
+      {
+        "type": "action",
+        "description": "Click a tour card"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the tour detail page is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the tour itinerary and pricing information are displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC009",
+    "title": "Switch the site from Turkish to English on the same page",
+    "description": "This verifies that a visitor can change the language to English while staying on the same page and keeping context.",
+    "category": "Language switching",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /tr"
+      },
+      {
+        "type": "action",
+        "description": "Click the English language switcher"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the page is displayed in English"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the current page content remains on the home page"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC010",
+    "title": "Review itinerary gallery and live departures on a tour page",
+    "description": "A visitor can inspect a tour detail page and see the itinerary, gallery, and live departure availability.",
+    "category": "Tour detail and departure dates",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /tr/tours"
+      },
+      {
+        "type": "action",
+        "description": "Click a tour card"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the day-by-day itinerary is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the gallery and departure availability are displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC011",
+    "title": "Show a not found result for an incorrect reservation lookup",
+    "description": "This verifies that an incorrect booking reference or email produces a not found result and allows the guest to try again.",
+    "category": "Booking lookup by reference",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /tr/reservations"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the booking reference field with an invalid booking reference"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the booking email field with an email that does not match the reservation"
+      },
+      {
+        "type": "action",
+        "description": "Search for the reservation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a not found message is displayed"
+      },
+      {
+        "type": "action",
+        "description": "Start a new search"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the lookup form is ready for another search"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC012",
+    "title": "Switch language in the header while staying on the same page",
+    "description": "A bilingual visitor can switch between Turkish and English from the header without losing the current page context.",
+    "category": "Browse tours",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /tr/tours"
+      },
+      {
+        "type": "action",
+        "description": "Click the English language switcher"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the page content is displayed in English"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the tour catalogue remains open"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC013",
+    "title": "Start booking without preselecting a departure",
+    "description": "A visitor can begin checkout from a tour page without choosing a departure first and still reach the booking form.",
+    "category": "Tour detail and departure dates",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /tr/tours"
+      },
+      {
+        "type": "action",
+        "description": "Click a tour card"
+      },
+      {
+        "type": "action",
+        "description": "Click the booking button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the checkout page is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the booking form is ready for trip details"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC014",
+    "title": "Retry reservation lookup after no match",
+    "description": "A returning guest can submit an incorrect reservation lookup and then correct it to find the booking.",
+    "category": "Guest checkout",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /tr/reservations"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the reservation reference field with an invalid reference"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the booking e-mail field with the matching e-mail"
+      },
+      {
+        "type": "action",
+        "description": "Submit the reservation lookup form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a reservation not found message is displayed"
+      },
+      {
+        "type": "action",
+        "description": "Replace the reservation reference with a valid reference"
+      },
+      {
+        "type": "action",
+        "description": "Submit the reservation lookup form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the reservation details are displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC015",
+    "title": "Jump from the home page to a section using the header navigation",
+    "description": "This verifies that the fixed header can move a visitor from the home page to a key section without losing the current page context.",
+    "category": "Header navigation and mobile menu",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /tr"
+      },
+      {
+        "type": "action",
+        "description": "Click the header navigation link to a main section"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the selected section is displayed in the page content"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the visitor remains on the home page"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC016",
+    "title": "Use the mobile header menu to navigate without losing locale",
+    "description": "A mobile user can open the header menu and navigate to another page while staying in the same locale.",
+    "category": "Browse tours",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /tr"
+      },
+      {
+        "type": "action",
+        "description": "Open the header menu"
+      },
+      {
+        "type": "action",
+        "description": "Click the link to view all tours"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the tour catalogue is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the Turkish locale is preserved"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC017",
+    "title": "Open the mobile menu and review the navigation options",
+    "description": "This verifies that a mobile user can open the full-screen menu and see the available navigation options.",
+    "category": "Header navigation and mobile menu",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /tr"
+      },
+      {
+        "type": "action",
+        "description": "Open the mobile menu"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the mobile navigation options are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the page content is still accessible behind the menu"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC018",
+    "title": "Mark a tour as favourite while browsing",
+    "description": "A visitor can favourite a tour card and keep that favourite state visible while continuing to browse the tour list.",
+    "category": "Browse tours",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /tr/tours"
+      },
+      {
+        "type": "action",
+        "description": "Click the favourite control on a tour card"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the tour card shows a favourited state"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the favourite state remains visible while browsing the catalogue"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC019",
+    "title": "Use the home page lookup panel to search reservations inline",
+    "description": "A visitor can use the home page booking lookup panel to search for an existing reservation without leaving the landing page.",
+    "category": "Guest checkout",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /tr"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the reservation reference field in the home page lookup panel with a valid reference"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the booking e-mail field in the home page lookup panel with the matching e-mail"
+      },
+      {
+        "type": "action",
+        "description": "Submit the home page lookup form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the reservation summary is displayed on the home page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the lookup result remains within the landing page context"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC020",
+    "title": "Open the contact link from a tour page",
+    "description": "A visitor can use the tour page contact action to open the question link for the tour.",
+    "category": "Tour detail and departure dates",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /tr/tours"
+      },
+      {
+        "type": "action",
+        "description": "Click a tour card"
+      },
+      {
+        "type": "action",
+        "description": "Click the question link"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the contact link is opened"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a mail-based contact action is available"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC021",
+    "title": "Close the mobile menu with Escape",
+    "description": "This verifies that a mobile user can dismiss the open menu with the Escape key and return to browsing.",
+    "category": "Header navigation and mobile menu",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /tr"
+      },
+      {
+        "type": "action",
+        "description": "Open the mobile menu"
+      },
+      {
+        "type": "action",
+        "description": "Press Escape"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the mobile menu is closed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the home page content is visible"
+      }
+    ],
+    "priority": "Low"
+  }
+]

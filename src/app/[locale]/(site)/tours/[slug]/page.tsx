@@ -3,9 +3,9 @@ import { notFound } from "next/navigation";
 
 import { isLocale, locales } from "@/config/i18n";
 import {
+  getDepartures,
   getRelatedTours,
   getTourBySlug,
-  getTourSlugs,
   TourDetail,
 } from "@/features/tours";
 import { getDictionary } from "@/i18n/get-dictionary";
@@ -14,10 +14,8 @@ type TourPageProps = {
   params: Promise<{ locale: string; slug: string }>;
 };
 
-export async function generateStaticParams() {
-  const slugs = await getTourSlugs();
-  return locales.flatMap((locale) => slugs.map((slug) => ({ locale, slug })));
-}
+/** Availability changes per booking, so this page is never cached as a whole. */
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,
@@ -40,7 +38,9 @@ export async function generateMetadata({
     openGraph: {
       title: tour.title,
       description: tour.summary,
-      images: [{ url: tour.cover.url, alt: tour.cover.alt }],
+      ...(tour.cover
+        ? { images: [{ url: tour.cover.url, alt: tour.cover.alt }] }
+        : {}),
     },
   };
 }
@@ -55,12 +55,16 @@ export default async function TourPage({ params }: TourPageProps) {
   ]);
   if (!tour) notFound();
 
-  const related = await getRelatedTours(slug, locale);
+  const [related, departures] = await Promise.all([
+    getRelatedTours(slug, locale),
+    getDepartures(slug),
+  ]);
 
   return (
     <TourDetail
       tour={tour}
       related={related}
+      departures={departures}
       locale={locale}
       dictionary={dictionary}
     />

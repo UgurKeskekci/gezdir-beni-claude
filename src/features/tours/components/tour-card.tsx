@@ -11,7 +11,7 @@ import {
 import { Photo } from "@/components/ui/photo";
 import type { Locale } from "@/config/i18n";
 import { FavoriteButton } from "@/features/tours/components/favorite-button";
-import type { Tour, TourBadgeTone } from "@/features/tours/types";
+import type { TourBadgeTone, TourSummary } from "@/features/tours/types";
 import type { Dictionary } from "@/i18n/types";
 import { formatNumber, formatPrice } from "@/lib/format";
 import { routes } from "@/lib/routes";
@@ -19,13 +19,13 @@ import { cn } from "@/lib/utils";
 
 /** Each badge meaning gets its own colour so they never read as the same label. */
 const BADGE_TONES: Record<TourBadgeTone, string> = {
-  bestseller: "bg-accent text-[oklch(0.2_0.03_60)]",
+  bestseller: "bg-accent text-white",
   new: "bg-primary text-primary-foreground",
-  scarce: "bg-white text-[oklch(0.25_0.02_20)]",
+  scarce: "bg-white text-accent-deep",
 };
 
 type TourCardProps = {
-  tour: Tour;
+  tour: TourSummary;
   locale: Locale;
   dictionary: Dictionary["tours"];
 };
@@ -34,22 +34,23 @@ export function TourCard({ tour, locale, dictionary }: TourCardProps) {
   return (
     <article
       className={cn(
-        "group border-border bg-surface relative flex h-full flex-col overflow-hidden rounded-3xl border",
+        "group card-soft relative flex h-full flex-col overflow-hidden rounded-[1.75rem]",
         "transition-[transform,border-color,box-shadow] duration-300 ease-[var(--ease-out-expo)]",
-        "hover:border-primary/40 hover:-translate-y-1.5",
-        "hover:shadow-[0_24px_60px_-28px_oklch(0.79_0.13_190_/_0.55)]",
+        "hover:border-primary/30 hover:shadow-card-hover hover:-translate-y-1.5",
       )}
     >
-      <div className="relative h-52 overflow-hidden">
-        <Photo
-          image={tour.cover}
-          fill
-          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-          className="object-cover transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-[1.07]"
-        />
+      <div className="relative m-2 mb-0 h-52 overflow-hidden rounded-[1.35rem]">
+        {tour.cover ? (
+          <Photo
+            image={tour.cover}
+            fill
+            sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+            className="object-cover transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-[1.07]"
+          />
+        ) : null}
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-black/25"
+          className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/5 to-black/20"
         />
 
         <div className="absolute inset-x-4 top-4 flex items-start justify-between gap-2">
@@ -106,7 +107,7 @@ export function TourCard({ tour, locale, dictionary }: TourCardProps) {
           {tour.highlights.slice(0, 3).map((highlight) => (
             <li
               key={highlight}
-              className="bg-surface-muted text-muted-foreground rounded-full px-2.5 py-1 text-xs whitespace-nowrap"
+              className="bg-primary/8 text-primary rounded-full px-2.5 py-1 text-xs font-medium whitespace-nowrap"
             >
               {highlight}
             </li>
@@ -138,10 +139,10 @@ export function TourCard({ tour, locale, dictionary }: TourCardProps) {
         <div className="border-border mt-auto flex items-end justify-between gap-3 border-t pt-4">
           <p className="leading-none">
             <span
-              className="font-display text-2xl font-semibold tracking-tight"
+              className="font-display text-primary text-2xl font-bold tracking-tight"
               data-tabular
             >
-              {formatPrice(tour.price.amount, tour.price.currency, locale)}
+              {formatPrice(tour.price.amountMinor, tour.price.currency, locale)}
             </span>
             <span className="text-subtle-foreground mt-1.5 block text-xs">
               {dictionary.perPerson}

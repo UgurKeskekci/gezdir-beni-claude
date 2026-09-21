@@ -19,7 +19,7 @@ export default async function SiteLayout({
   return (
     <div className="flex min-h-dvh flex-col">
       <SiteHeader locale={locale} dictionary={dictionary} />
-      {/* The header is fixed; the hero pulls itself back up under it with -mt-16. */}
+      {/* The header is fixed and solid, so every page starts below it. */}
       <main className="flex-1 pt-16">{children}</main>
       <SiteFooter locale={locale} dictionary={dictionary} />
     </div>

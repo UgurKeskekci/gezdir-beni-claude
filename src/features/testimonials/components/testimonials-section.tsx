@@ -42,7 +42,7 @@ export function TestimonialsSection({
           aria-hidden="true"
           className="fade-edge-right pointer-events-none absolute inset-y-0 right-0 z-10 w-16 sm:w-28"
         />
-        <ul className="animate-marquee-x flex w-max gap-5 px-5 group-hover:[animation-play-state:paused] sm:px-8">
+        <ul className="animate-marquee-x flex w-max gap-5 px-5 py-4 group-hover:[animation-play-state:paused] sm:px-8">
           {track.map((testimonial, index) => (
             <li
               key={`${testimonial.id}-${index}`}

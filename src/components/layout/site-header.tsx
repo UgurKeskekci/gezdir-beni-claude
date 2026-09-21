@@ -29,7 +29,12 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
 
   const onLanding = pathname === `/${locale}` || pathname === "/";
 
-  const links = [
+  const links: {
+    label: string;
+    href: string;
+    id: string;
+    desktopClassName?: string;
+  }[] = [
     { label: dictionary.nav.tours, href: routes.tours(locale), id: "tours" },
     { label: dictionary.nav.how, href: `/${locale}#how`, id: "how" },
     { label: dictionary.nav.why, href: routes.why(locale), id: "why" },
@@ -37,6 +42,15 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
       label: dictionary.nav.contact,
       href: routes.contact(locale),
       id: "contact",
+    },
+    // A page rather than a section, so it never takes the active-section underline.
+    // Five links crowd the bar below 1024px, and it is in the footer and the mobile
+    // menu as well, so the desktop bar only shows it when there is room.
+    {
+      label: dictionary.nav.lookup,
+      href: routes.lookup(locale),
+      id: "",
+      desktopClassName: "hidden lg:inline-block",
     },
   ];
 
@@ -74,10 +88,10 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-[60] transition-[background-color,border-color,backdrop-filter] duration-300 ease-[var(--ease-out-expo)]",
+        "bg-background/95 fixed inset-x-0 top-0 z-[60] border-b backdrop-blur-xl transition-[border-color,box-shadow] duration-300 ease-[var(--ease-out-expo)]",
         scrolled
-          ? "border-border/70 bg-background/80 border-b backdrop-blur-xl"
-          : "border-b border-transparent bg-transparent",
+          ? "border-border shadow-[0_8px_24px_-18px_rgb(16_40_90/0.35)]"
+          : "border-border/60",
       )}
     >
       <Container
@@ -86,15 +100,12 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
       >
         <Link
           href={routes.home(locale)}
-          className={cn(
-            "font-display text-lg font-semibold tracking-tight transition-colors duration-200",
-            scrolled ? "text-foreground" : "text-white",
-          )}
+          className="font-display text-primary text-xl font-bold tracking-tight"
         >
           {siteConfig.name}
         </Link>
 
-        <nav className="hidden items-center gap-8 text-sm md:flex">
+        <nav className="hidden items-center gap-8 text-sm font-medium md:flex">
           {links.map((link) => {
             const active = onLanding && activeSection === link.id;
             return (
@@ -104,13 +115,10 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
                 aria-current={active ? "true" : undefined}
                 className={cn(
                   "group relative py-1 transition-colors duration-200",
-                  scrolled
-                    ? active
-                      ? "text-foreground"
-                      : "text-muted-foreground hover:text-foreground"
-                    : active
-                      ? "text-white"
-                      : "text-white/75 hover:text-white",
+                  link.desktopClassName,
+                  active
+                    ? "text-primary"
+                    : "text-foreground/80 hover:text-primary",
                 )}
               >
                 {link.label}
@@ -133,7 +141,6 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
           <LocaleSwitcher
             locale={locale}
             dictionary={dictionary.localeSwitcher}
-            onPhoto={!scrolled}
           />
           <ButtonLink
             href={routes.tours(locale)}
@@ -146,7 +153,6 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
             locale={locale}
             links={links}
             dictionary={dictionary.nav}
-            onPhoto={!scrolled}
           />
         </div>
       </Container>

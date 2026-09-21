@@ -1,0 +1,960 @@
+[
+  {
+    "slug": "kapadokya-balon-rotasi",
+    "accent": "sunrise",
+    "badgeTone": "bestseller",
+    "sortOrder": 0,
+    "title": {
+      "tr": "Kapadokya Balon Rotası",
+      "en": "Cappadocia Balloon Route"
+    },
+    "destination": {
+      "tr": "Ürgüp",
+      "en": "Ürgüp"
+    },
+    "country": {
+      "tr": "Türkiye",
+      "en": "Türkiye"
+    },
+    "summary": {
+      "tr": "Gün doğumunda balon uçuşu, mağara otelde iki gece ve Ihlara Vadisi'nde yürüyüş.",
+      "en": "A sunrise balloon flight, two nights in a cave hotel and a walk through the Ihlara Valley."
+    },
+    "description": {
+      "tr": "Dört gün boyunca Kapadokya'yı hem yerden hem havadan görüyorsun. Sabahın ilk ışıklarında balonla kalkıyoruz, ardından vadilerde yürüyor, akşamları taş oyma odalarda dinleniyoruz. Rehberimiz bölgede doğup büyümüş biri; gün içinde kalabalıktan uzak duraklara sapıyoruz.",
+      "en": "Four days of seeing Cappadocia from the ground and from the air. We lift off at first light, walk the valleys during the day and rest in rooms carved from stone at night. Our guide grew up here, so the route keeps ducking away from the crowds."
+    },
+    "badge": {
+      "tr": "En çok satan",
+      "en": "Best seller"
+    },
+    "durationDays": 4,
+    "durationNights": 3,
+    "maxGroupSize": 10,
+    "rating": 4.9,
+    "reviewCount": 312,
+    "priceMinor": 1890000,
+    "currency": "TRY",
+    "cover": {
+      "url": "/images/tours/cappadocia-balloons.jpg",
+      "blurDataURL": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAACwAQCdASoMAAgAAwBSJZACdADZkRXgAP73LFQn1Gn5fVY+W5/EXaYw/+USdljlKkESE+2KM8s0RBQPktiovbcYZbOIAAAA",
+      "alt": {
+        "tr": "Kapadokya'da gün doğumunda peribacalarının üzerinde süzülen sıcak hava balonları",
+        "en": "Hot air balloons drifting over the fairy chimneys of Cappadocia at sunrise"
+      },
+      "credit": {
+        "author": "Bernard Gagnon",
+        "license": "CC BY-SA 3.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Hot_air_balloon_in_Cappadocia_02.jpg"
+      }
+    },
+    "gallery": [
+      {
+        "url": "/images/tours/cappadocia-balloon-close.jpg",
+        "blurDataURL": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAADwAQCdASoJAAwAAwBSJQBOgCFsPH/+atAA/usnXJkGp9wkdHL3cIx66n3UWSBMb00/NiXSy9DtyYO8w8nRlInN3nFFWa3YAAA=",
+        "alt": {
+          "tr": "Vadinin üzerinde yükselen tek bir sıcak hava balonu",
+          "en": "A single hot air balloon rising above the valley"
+        },
+        "credit": {
+          "author": "Bernard Gagnon",
+          "license": "CC BY-SA 3.0",
+          "source": "https://commons.wikimedia.org/wiki/File:Hot_air_balloon_in_Cappadocia_01.jpg"
+        }
+      },
+      {
+        "url": "/images/tours/cappadocia-aerial.jpg",
+        "blurDataURL": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAADwAQCdASoMAAgAAwBSJQBOgB6VvLglbgAA/pGlgpkXM1tVVNj+EJUyGq3LCVFDK4/Vm94S8KV6AF7QdwETcAAA",
+        "alt": {
+          "tr": "Kapadokya'nın havadan görünen vadileri ve kaya oluşumları",
+          "en": "Aerial view of the valleys and rock formations of Cappadocia"
+        },
+        "credit": {
+          "author": "Benh LIEU SONG (Flickr)",
+          "license": "CC BY-SA 4.0",
+          "source": "https://commons.wikimedia.org/wiki/File:Cappadocia_Aerial_View_Landscape.jpg"
+        }
+      }
+    ],
+    "highlights": [
+      {
+        "tr": "Balon uçuşu dahil",
+        "en": "Balloon flight included"
+      },
+      {
+        "tr": "Mağara otel",
+        "en": "Cave hotel"
+      },
+      {
+        "tr": "Yerel şarap tadımı",
+        "en": "Local wine tasting"
+      }
+    ],
+    "included": [
+      {
+        "tr": "3 gece mağara otelde konaklama",
+        "en": "3 nights in a cave hotel"
+      },
+      {
+        "tr": "Sıcak hava balonu uçuşu",
+        "en": "Hot air balloon flight"
+      },
+      {
+        "tr": "Her sabah kahvaltı",
+        "en": "Breakfast every morning"
+      },
+      {
+        "tr": "Havalimanı transferleri",
+        "en": "Airport transfers"
+      }
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": {
+          "tr": "Varış ve Ürgüp turu",
+          "en": "Arrival and Ürgüp"
+        },
+        "description": {
+          "tr": "Kayseri'den transfer, otele yerleşme ve gün batımında Ürgüp'te kısa bir yürüyüş.",
+          "en": "Transfer from Kayseri, check-in, and a short sunset walk through Ürgüp."
+        }
+      },
+      {
+        "day": 2,
+        "title": {
+          "tr": "Balon uçuşu ve Göreme",
+          "en": "Balloon flight and Göreme"
+        },
+        "description": {
+          "tr": "Gün doğumunda balonla kalkış, ardından Göreme Açık Hava Müzesi ve Güvercinlik Vadisi.",
+          "en": "Lift off at sunrise, then the Göreme Open Air Museum and the Pigeon Valley."
+        }
+      },
+      {
+        "day": 3,
+        "title": {
+          "tr": "Ihlara Vadisi yürüyüşü",
+          "en": "Ihlara Valley walk"
+        },
+        "description": {
+          "tr": "Vadi boyunca 8 km yürüyüş, kaya kiliseleri ve dere kenarında öğle molası.",
+          "en": "An 8 km walk along the valley, rock churches and lunch by the stream."
+        }
+      },
+      {
+        "day": 4,
+        "title": {
+          "tr": "Çömlek atölyesi ve dönüş",
+          "en": "Pottery workshop and departure"
+        },
+        "description": {
+          "tr": "Avanos'ta çömlek atölyesi, öğleden sonra havalimanına transfer.",
+          "en": "A pottery workshop in Avanos, then an afternoon transfer to the airport."
+        }
+      }
+    ]
+  },
+  {
+    "slug": "oludeniz-tekne-turu",
+    "accent": "sea",
+    "badgeTone": null,
+    "sortOrder": 1,
+    "title": {
+      "tr": "Ölüdeniz Tekne Turu",
+      "en": "Ölüdeniz Boat Trip"
+    },
+    "destination": {
+      "tr": "Fethiye",
+      "en": "Fethiye"
+    },
+    "country": {
+      "tr": "Türkiye",
+      "en": "Türkiye"
+    },
+    "summary": {
+      "tr": "Kelebekler Vadisi, Gemiler Adası ve saklı koylarda yüzme molaları ile üç günlük mavi rota.",
+      "en": "Three days on the blue route with swim stops at Butterfly Valley, Gemiler Island and hidden coves."
+    },
+    "description": {
+      "tr": "Üç gün boyunca tekne senin evin. Sabah demir alıyoruz, gün içinde dört ayrı koyda yüzüyoruz, akşamları güvertede yemek yiyoruz. Karaya sadece Kelebekler Vadisi ve Gemiler Adası'nda çıkıyoruz.",
+      "en": "For three days the boat is home. We weigh anchor in the morning, swim in four different coves during the day and eat on deck at night. The only landings are Butterfly Valley and Gemiler Island."
+    },
+    "badge": null,
+    "durationDays": 3,
+    "durationNights": 2,
+    "maxGroupSize": 12,
+    "rating": 4.8,
+    "reviewCount": 204,
+    "priceMinor": 1240000,
+    "currency": "TRY",
+    "cover": {
+      "url": "/images/tours/oludeniz-swimming.jpg",
+      "blurDataURL": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAAAQAgCdASoMAAgAAwBSJZgCdAD5j5fQrdQAAP7Hct3Y91QVcS52Taetv0EN7h80Ooi03wnHR5hOD98x2izBjacAAAA=",
+      "alt": {
+        "tr": "Ölüdeniz'in turkuaz lagününde yüzen insanlar",
+        "en": "People swimming in the turquoise lagoon of Ölüdeniz"
+      },
+      "credit": {
+        "author": "dronepicr",
+        "license": "CC BY 2.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Swimming_in_the_Blue_Lagoon_in_%C3%96l%C3%BCdeniz%2C_Turkey_%2849070223763%29.jpg"
+      }
+    },
+    "gallery": [
+      {
+        "url": "/images/tours/oludeniz-paragliding.jpg",
+        "blurDataURL": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAADwAQCdASoMAAgAAwBSJYgCdAEQEnqIhwAA/fx2gSXD+vd60KRCHRZmG43JoyZjPFIoGfcHiZvRjiRmsvEf3iLQ5XQAAA==",
+        "alt": {
+          "tr": "Ölüdeniz lagününün üzerinde yamaç paraşütü",
+          "en": "A paraglider above the Ölüdeniz lagoon"
+        },
+        "credit": {
+          "author": "dronepicr",
+          "license": "CC BY 2.0",
+          "source": "https://commons.wikimedia.org/wiki/File:Paragliding_over_the_Blue_Lagoon_in_%C3%96l%C3%BCdeniz%2C_Turkey_%2849070937152%29.jpg"
+        }
+      },
+      {
+        "url": "/images/tours/oludeniz-lagoon.jpg",
+        "blurDataURL": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAADQAQCdASoMAAUAAwBSJZgCdAD1TbdmwAD+lNbL8IT70HE8KGzxEb9rK730iK4kj9MTYc1TNLk7Ca5ESFFCQAAA",
+        "alt": {
+          "tr": "Ölüdeniz'in kum dili ve mavi lagünü",
+          "en": "The sand spit and blue lagoon of Ölüdeniz"
+        },
+        "credit": {
+          "author": "dronepicr",
+          "license": "CC BY 2.0",
+          "source": "https://commons.wikimedia.org/wiki/File:Blue_Lagoon_in_%C3%96l%C3%BCdeniz%2C_Turkey_%2849070738266%29.jpg"
+        }
+      }
+    ],
+    "highlights": [
+      {
+        "tr": "Teknede konaklama",
+        "en": "Sleep on board"
+      },
+      {
+        "tr": "Günde 4 yüzme molası",
+        "en": "Four swim stops a day"
+      },
+      {
+        "tr": "Şef eşliğinde akşam yemeği",
+        "en": "Dinner cooked on board"
+      }
+    ],
+    "included": [
+      {
+        "tr": "2 gece teknede konaklama",
+        "en": "2 nights on board"
+      },
+      {
+        "tr": "Tüm öğünler",
+        "en": "All meals"
+      },
+      {
+        "tr": "Şnorkel ekipmanı",
+        "en": "Snorkelling gear"
+      },
+      {
+        "tr": "Fethiye limanı transferi",
+        "en": "Transfer to Fethiye harbour"
+      }
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": {
+          "tr": "Fethiye'den kalkış",
+          "en": "Departure from Fethiye"
+        },
+        "description": {
+          "tr": "Öğlen demir alıyoruz, Akvaryum Koyu'nda ilk yüzme molası ve gün batımı demirlemesi.",
+          "en": "We set off at midday, take a first swim in Aquarium Bay and anchor for sunset."
+        }
+      },
+      {
+        "day": 2,
+        "title": {
+          "tr": "Kelebekler Vadisi",
+          "en": "Butterfly Valley"
+        },
+        "description": {
+          "tr": "Sabah vadiye çıkış, şelaleye kısa yürüyüş, öğleden sonra üç koyda yüzme.",
+          "en": "A morning landing in the valley, a short hike to the waterfall, three swim stops after lunch."
+        }
+      },
+      {
+        "day": 3,
+        "title": {
+          "tr": "Gemiler Adası ve dönüş",
+          "en": "Gemiler Island and return"
+        },
+        "description": {
+          "tr": "Adadaki Bizans kalıntıları, son yüzme molası ve akşamüstü Fethiye'ye dönüş.",
+          "en": "Byzantine ruins on the island, a final swim and an late afternoon return to Fethiye."
+        }
+      }
+    ]
+  },
+  {
+    "slug": "karadeniz-yayla-rotasi",
+    "accent": "forest",
+    "badgeTone": "new",
+    "sortOrder": 2,
+    "title": {
+      "tr": "Karadeniz Yayla Rotası",
+      "en": "Black Sea Highlands Route"
+    },
+    "destination": {
+      "tr": "Rize",
+      "en": "Rize"
+    },
+    "country": {
+      "tr": "Türkiye",
+      "en": "Türkiye"
+    },
+    "summary": {
+      "tr": "Ayder, Pokut ve Sal yaylalarında sisin içinde yürüyüş, ahşap konaklarda konaklama.",
+      "en": "Walking through the mist in the Ayder, Pokut and Sal highlands, sleeping in wooden lodges."
+    },
+    "description": {
+      "tr": "Beş gün boyunca yaylaları dolaşıyoruz. Sabahları sis kalkmadan yürüyüşe çıkıyoruz, öğlenleri köy sofralarında yemek yiyoruz, geceleri ahşap konaklarda sobanın yanında oturuyoruz. Yürüyüşler zorlu değil ama her gün rakım değişiyor.",
+      "en": "Five days moving between the highlands. We walk before the mist lifts, eat at village tables at midday and sit by the stove in wooden lodges at night. The walks are gentle, but the altitude changes every day."
+    },
+    "badge": {
+      "tr": "Yeni rota",
+      "en": "New route"
+    },
+    "durationDays": 5,
+    "durationNights": 4,
+    "maxGroupSize": 8,
+    "rating": 4.7,
+    "reviewCount": 96,
+    "priceMinor": 2150000,
+    "currency": "TRY",
+    "cover": {
+      "url": "/images/tours/ayder-plateau.jpg",
+      "blurDataURL": "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAADwAQCdASoMAAgAAwBSJagCdAEQFVdytQAA/f0+RFcvNGkn3CFU4gKukCL3rHKgqpbGpvJ+uBneAAAA",
+      "alt": {
+        "tr": "Rize'de yeşil tepelere yayılmış Ayder Yaylası",
+        "en": "The Ayder plateau spread across green hills in Rize"
+      },
+      "credit": {
+        "author": "Dr. Zeynel Cebeci",
+        "license": "CC BY-SA 3.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Ayder_Plateau_%40_Rize-Turkey.JPG"
+      }
+    },
+    "gallery": [
+      {
+        "url": "/images/tours/firtina-creek.jpg",
+        "blurDataURL": "data:image/webp;base64,UklGRkIAAABXRUJQVlA4IDYAAADwAQCdASoJAAwAAwBSJYgC7AEO9EDCE+AA/pqfnm5TbxFrGC7WQRXZpTX8YoWlYXWP0XJh8AA=",
+        "alt": {
+          "tr": "Ormanın içinden akan Fırtına Deresi",
+          "en": "The Fırtına creek running through the forest"
+        },
+        "credit": {
+          "author": "Dr. Zeynel Cebeci",
+          "license": "CC BY-SA 3.0",
+          "source": "https://commons.wikimedia.org/wiki/File:F%C4%B1rt%C4%B1na_Deresi_%40Ayder-Rize-Turkey-2.JPG"
+        }
+      }
+    ],
+    "highlights": [
+      {
+        "tr": "Sisli sabah yürüyüşü",
+        "en": "Misty morning hike"
+      },
+      {
+        "tr": "Yerel kahvaltı",
+        "en": "Village breakfast"
+      },
+      {
+        "tr": "Çay bahçesi turu",
+        "en": "Tea garden tour"
+      }
+    ],
+    "included": [
+      {
+        "tr": "4 gece ahşap konakta konaklama",
+        "en": "4 nights in wooden lodges"
+      },
+      {
+        "tr": "Kahvaltı ve akşam yemeği",
+        "en": "Breakfast and dinner"
+      },
+      {
+        "tr": "Yayla transferleri",
+        "en": "Transfers between the highlands"
+      },
+      {
+        "tr": "Rehberli yürüyüşler",
+        "en": "Guided walks"
+      }
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": {
+          "tr": "Rize'den Ayder'e",
+          "en": "From Rize to Ayder"
+        },
+        "description": {
+          "tr": "Çay bahçelerinin arasından yayla yoluna çıkış ve Ayder'de ilk gece.",
+          "en": "Up the highland road through the tea gardens, first night in Ayder."
+        }
+      },
+      {
+        "day": 2,
+        "title": {
+          "tr": "Fırtına Deresi",
+          "en": "The Fırtına creek"
+        },
+        "description": {
+          "tr": "Dere boyunca yürüyüş, taş kemer köprüler ve öğleden sonra serbest zaman.",
+          "en": "A walk along the creek, stone arch bridges and a free afternoon."
+        }
+      },
+      {
+        "day": 3,
+        "title": {
+          "tr": "Pokut Yaylası",
+          "en": "Pokut plateau"
+        },
+        "description": {
+          "tr": "Sabah sisinde 6 km yürüyüş ve ahşap serenderlerin arasında konaklama.",
+          "en": "A 6 km walk in the morning mist, sleeping among wooden storehouses."
+        }
+      },
+      {
+        "day": 4,
+        "title": {
+          "tr": "Sal Yaylası",
+          "en": "Sal plateau"
+        },
+        "description": {
+          "tr": "Yayladan yaylaya geçiş, bulutların üstünde gün batımı.",
+          "en": "Crossing from one plateau to the next, sunset above the clouds."
+        }
+      },
+      {
+        "day": 5,
+        "title": {
+          "tr": "Çay hasadı ve dönüş",
+          "en": "Tea harvest and return"
+        },
+        "description": {
+          "tr": "Çay bahçesinde hasat denemesi, öğleden sonra Rize'ye dönüş.",
+          "en": "Trying your hand at the tea harvest, then back to Rize in the afternoon."
+        }
+      }
+    ]
+  },
+  {
+    "slug": "istanbul-gizli-sokaklar",
+    "accent": "city",
+    "badgeTone": null,
+    "sortOrder": 3,
+    "title": {
+      "tr": "İstanbul'un Gizli Sokakları",
+      "en": "Hidden Streets of Istanbul"
+    },
+    "destination": {
+      "tr": "İstanbul",
+      "en": "Istanbul"
+    },
+    "country": {
+      "tr": "Türkiye",
+      "en": "Türkiye"
+    },
+    "summary": {
+      "tr": "Balat, Kuzguncuk ve Yeldeğirmeni'nde yürüyerek keşif; esnaf lokantalarında tadım turu.",
+      "en": "Walking through Balat, Kuzguncuk and Yeldeğirmeni, with a tasting tour of neighbourhood eateries."
+    },
+    "description": {
+      "tr": "İki gün boyunca vapurla iki yaka arasında gidip geliyoruz. Sultanahmet'e hiç uğramıyoruz; bunun yerine mahalle aralarında yürüyor, sekiz farklı esnaf lokantasında tadım yapıyoruz. Yürüyüş temposu rahat, isteyen arada kahve molası veriyor.",
+      "en": "Two days of crossing between the two sides by ferry. We skip Sultanahmet entirely and walk the back streets instead, tasting at eight neighbourhood eateries along the way. The pace is easy, with coffee stops whenever anyone wants one."
+    },
+    "badge": null,
+    "durationDays": 2,
+    "durationNights": 1,
+    "maxGroupSize": 12,
+    "rating": 4.8,
+    "reviewCount": 428,
+    "priceMinor": 790000,
+    "currency": "TRY",
+    "cover": {
+      "url": "/images/tours/balat-houses.jpg",
+      "blurDataURL": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAADwAQCdASoMAAkAAwBSJQBOkCYidinQCAwA4mfsslOzvbvy1dET5C7B+Q/r50NKSnX4fz/dNQkbpd98XTaBfWmoOEe2qEeNYlHhVvgA",
+      "alt": {
+        "tr": "Balat'ın renkli cepheli tarihi evleri",
+        "en": "The colourful historic houses of Balat"
+      },
+      "credit": {
+        "author": "Antoloji",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Balat_houses.jpg"
+      }
+    },
+    "gallery": [
+      {
+        "url": "/images/tours/balat-colorful.jpg",
+        "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAAAQAgCdASoJAAwAAwBSJbACdAEfhn+zCWEAAP6ZQFZz3GEqqwXI2u6uSf9/ip9x+eYyanREbUWbeExFkaLPB5SB02n762vporacJV8p+VX2byAh4KAAAA==",
+        "alt": {
+          "tr": "Balat'ta yan yana dizilmiş rengarenk evler",
+          "en": "Brightly painted houses lined up in Balat"
+        },
+        "credit": {
+          "author": "Antoloji",
+          "license": "CC BY-SA 4.0",
+          "source": "https://commons.wikimedia.org/wiki/File:Colorful_Balat_houses.jpg"
+        }
+      },
+      {
+        "url": "/images/tours/balat-street.jpg",
+        "blurDataURL": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAAAQAgCdASoJAAwAAwBSJagCdAELVY5QlAKAAP7YQxsaZdDJg0UPJ8CTxCZOUtlNkYlGA/0t1bYPtsfae8nnWN/+Lite5xRxvahfTdnkriWkSxAA",
+        "alt": {
+          "tr": "Balat'ta dik bir sokak ve boyalı cepheler",
+          "en": "A steep street and painted façades in Balat"
+        },
+        "credit": {
+          "author": "Vogueeatss",
+          "license": "CC BY-SA 4.0",
+          "source": "https://commons.wikimedia.org/wiki/File:The_Colorful_Balat.jpg"
+        }
+      }
+    ],
+    "highlights": [
+      {
+        "tr": "8 duraklı tadım",
+        "en": "Eight tasting stops"
+      },
+      {
+        "tr": "Boğaz vapuru",
+        "en": "Bosphorus ferry"
+      },
+      {
+        "tr": "Fotoğraf rehberi",
+        "en": "Photo guide"
+      }
+    ],
+    "included": [
+      {
+        "tr": "1 gece butik otelde konaklama",
+        "en": "1 night in a boutique hotel"
+      },
+      {
+        "tr": "Tüm tadım duraklarındaki yiyecekler",
+        "en": "Food at every tasting stop"
+      },
+      {
+        "tr": "Vapur ve toplu taşıma kartı",
+        "en": "Ferry and transit card"
+      },
+      {
+        "tr": "Fotoğraf rehberi eşliği",
+        "en": "A photo guide with the group"
+      }
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": {
+          "tr": "Balat ve Fener",
+          "en": "Balat and Fener"
+        },
+        "description": {
+          "tr": "Renkli evler arasında yürüyüş, beş tadım durağı ve gün batımında Haliç manzarası.",
+          "en": "A walk among the coloured houses, five tasting stops and a Golden Horn sunset."
+        }
+      },
+      {
+        "day": 2,
+        "title": {
+          "tr": "Kuzguncuk ve Yeldeğirmeni",
+          "en": "Kuzguncuk and Yeldeğirmeni"
+        },
+        "description": {
+          "tr": "Vapurla karşı yakaya geçiş, duvar resimleri, üç tadım durağı ve veda kahvesi.",
+          "en": "A ferry to the other shore, street murals, three tasting stops and a farewell coffee."
+        }
+      }
+    ]
+  },
+  {
+    "slug": "likya-yolu-yuruyusu",
+    "accent": "sand",
+    "badgeTone": null,
+    "sortOrder": 4,
+    "title": {
+      "tr": "Likya Yolu Yürüyüşü",
+      "en": "Lycian Way Trek"
+    },
+    "destination": {
+      "tr": "Kaş",
+      "en": "Kaş"
+    },
+    "country": {
+      "tr": "Türkiye",
+      "en": "Türkiye"
+    },
+    "summary": {
+      "tr": "Antik patikalarda altı günlük yürüyüş, her akşam denize sıfır pansiyonda konaklama.",
+      "en": "Six days on ancient paths, with a seafront guesthouse waiting at the end of every stage."
+    },
+    "description": {
+      "tr": "Altı gün boyunca günde 12-15 km yürüyoruz. Bagajın her sabah bir sonraki pansiyona gidiyor, sen sadece günlük çantanı taşıyorsun. Rota deniz kıyısı ile antik kentler arasında gidip geliyor; her akşam yürüyüşü denizde yüzerek bitiriyoruz.",
+      "en": "Six days of walking 12-15 km a day. Your luggage moves to the next guesthouse each morning, so you only carry a daypack. The route swings between the shoreline and ancient cities, and every day ends with a swim."
+    },
+    "badge": null,
+    "durationDays": 6,
+    "durationNights": 5,
+    "maxGroupSize": 10,
+    "rating": 4.9,
+    "reviewCount": 158,
+    "priceMinor": 2480000,
+    "currency": "TRY",
+    "cover": {
+      "url": "/images/tours/kas-limanagzi.jpg",
+      "blurDataURL": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAAAQAgCdASoMAAkAAwBSJQBOiP/wPRNEaX8cAP6RvgaEDIxMeclhz23mLBi+3umEAL0qdU9MKEOw9VQEKRsCNn8uqUT5uOP8AAA=",
+      "alt": {
+        "tr": "Kaş yakınlarında Limanağzı koyu ve berrak deniz",
+        "en": "The Limanağzı cove and clear sea near Kaş"
+      },
+      "credit": {
+        "author": "Tugceeakgunn91",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Antalya_-_Ka%C5%9F_-Limana%C4%9Fz%C4%B1.jpg"
+      }
+    },
+    "gallery": [
+      {
+        "url": "/images/tours/kas-sunset.jpg",
+        "blurDataURL": "data:image/webp;base64,UklGRkgAAABXRUJQVlA4IDwAAABQAgCdASoMAAcAAwBSJZQCdH8GJ/geqA+r2gAA/rdwsZ/YLMgTl5Z/VrJDFWbbXZAca5CeNlRqtVavYAA=",
+        "alt": {
+          "tr": "Kaş'ta akşamüstü deniz manzarası",
+          "en": "An evening sea view from Kaş"
+        },
+        "credit": {
+          "author": "Esginmurat",
+          "license": "CC BY-SA 4.0",
+          "source": "https://commons.wikimedia.org/wiki/File:Ka%C5%9F_Ak%C5%9Fam%C3%BCst%C3%BC_Manzaras%C4%B1.jpg"
+        }
+      },
+      {
+        "url": "/images/tours/kas-harbour.jpg",
+        "blurDataURL": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAAAQAgCdASoMAAcAAwBSJQBOgCPgbCAFAroAAP7c5VE31OBnys6Ct83yufWioMNK+eFAWN3457iHwRKcHFrV6jYCVo3qAAAA",
+        "alt": {
+          "tr": "Kaş limanından tekneler ve kıyı görünümü",
+          "en": "Boats and the shoreline seen from the harbour of Kaş"
+        },
+        "credit": {
+          "author": "Esginmurat",
+          "license": "CC BY-SA 4.0",
+          "source": "https://commons.wikimedia.org/wiki/File:Ka%C5%9F%2C_A%C4%9Fustos_2015_Liman%27dan_bir_g%C3%B6r%C3%BCn%C3%BCm.jpg"
+        }
+      }
+    ],
+    "highlights": [
+      {
+        "tr": "Günde 12-15 km",
+        "en": "12-15 km a day"
+      },
+      {
+        "tr": "Bagaj transferi",
+        "en": "Luggage transfer"
+      },
+      {
+        "tr": "Antik kent gezileri",
+        "en": "Ancient city visits"
+      }
+    ],
+    "included": [
+      {
+        "tr": "5 gece pansiyon konaklaması",
+        "en": "5 nights in guesthouses"
+      },
+      {
+        "tr": "Kahvaltı ve yürüyüş paketi",
+        "en": "Breakfast and a trail lunch"
+      },
+      {
+        "tr": "Günlük bagaj transferi",
+        "en": "Daily luggage transfer"
+      },
+      {
+        "tr": "Antik kent giriş ücretleri",
+        "en": "Entry to the ancient sites"
+      }
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": {
+          "tr": "Kaş'ta buluşma",
+          "en": "Meeting in Kaş"
+        },
+        "description": {
+          "tr": "Ekipman kontrolü, kısa alıştırma yürüyüşü ve limanda tanışma yemeği.",
+          "en": "Kit check, a short warm-up walk and a welcome dinner at the harbour."
+        }
+      },
+      {
+        "day": 2,
+        "title": {
+          "tr": "Limanağzı etabı",
+          "en": "The Limanağzı stage"
+        },
+        "description": {
+          "tr": "Koylar boyunca 13 km, öğlen molası kumsalda.",
+          "en": "13 km along the coves, with lunch on the beach."
+        }
+      },
+      {
+        "day": 3,
+        "title": {
+          "tr": "Aperlai antik kenti",
+          "en": "Ancient Aperlai"
+        },
+        "description": {
+          "tr": "Batık şehrin üzerinden geçen patika ve 14 km yürüyüş.",
+          "en": "The path above the sunken city, 14 km of walking."
+        }
+      },
+      {
+        "day": 4,
+        "title": {
+          "tr": "Üçağız ve Kekova",
+          "en": "Üçağız and Kekova"
+        },
+        "description": {
+          "tr": "Sabah yürüyüşü, öğleden sonra tekneyle Kekova turu.",
+          "en": "A morning walk, then a boat around Kekova in the afternoon."
+        }
+      },
+      {
+        "day": 5,
+        "title": {
+          "tr": "Kale köyü",
+          "en": "The village of Kale"
+        },
+        "description": {
+          "tr": "Lykia lahitleri arasında tırmanış ve kale manzarasında mola.",
+          "en": "A climb among Lycian sarcophagi and a break at the castle viewpoint."
+        }
+      },
+      {
+        "day": 6,
+        "title": {
+          "tr": "Son etap ve veda",
+          "en": "Final stage and farewell"
+        },
+        "description": {
+          "tr": "10 km'lik kısa etap, denizde son yüzme ve öğleden sonra dağılma.",
+          "en": "A short 10 km stage, a last swim and an afternoon farewell."
+        }
+      }
+    ]
+  },
+  {
+    "slug": "bali-pirinc-terasi",
+    "accent": "forest",
+    "badgeTone": "scarce",
+    "sortOrder": 5,
+    "title": {
+      "tr": "Bali Pirinç Terasları",
+      "en": "Bali Rice Terraces"
+    },
+    "destination": {
+      "tr": "Ubud",
+      "en": "Ubud"
+    },
+    "country": {
+      "tr": "Endonezya",
+      "en": "Indonesia"
+    },
+    "summary": {
+      "tr": "Ubud'da villa konaklaması, Tegallalang terasları ve gün doğumunda Batur yürüyüşü.",
+      "en": "A villa stay in Ubud, the Tegallalang terraces and a sunrise hike up Mount Batur."
+    },
+    "description": {
+      "tr": "Sekiz gün boyunca Ubud'daki villamızdan çıkıp adayı parça parça geziyoruz. Teraslarda yürüyor, bir gün Batur'a gün doğumu için gece yarısı kalkıyor, bir gün mutfağa girip yerel yemek yapmayı öğreniyoruz. Programda boş günler de var.",
+      "en": "Eight days exploring the island in pieces from our villa in Ubud. We walk the terraces, get up in the middle of the night once for the Batur sunrise, and spend a day in the kitchen learning to cook. There are empty days in the plan too."
+    },
+    "badge": {
+      "tr": "Son 3 kontenjan",
+      "en": "3 spots left"
+    },
+    "durationDays": 8,
+    "durationNights": 7,
+    "maxGroupSize": 12,
+    "rating": 4.9,
+    "reviewCount": 187,
+    "priceMinor": 6850000,
+    "currency": "TRY",
+    "cover": {
+      "url": "/images/tours/bali-terraces.jpg",
+      "blurDataURL": "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAACwAQCdASoMAAgAAwBSJagCdACQQbgAAP5J9TnYhVY4Wn8Q8DNtz7THSYExQXxO6EZbOaEJxuge0FAA",
+      "alt": {
+        "tr": "Bali'de Tegallalang pirinç terasları",
+        "en": "The Tegallalang rice terraces in Bali"
+      },
+      "credit": {
+        "author": "Philip Nalangan",
+        "license": "CC BY 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Tegallalang_Rice_Terraces_Bali.jpg"
+      }
+    },
+    "gallery": [
+      {
+        "url": "/images/tours/bali-terraces-path.jpg",
+        "blurDataURL": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAADQAQCdASoMAAgAAwBSJZgCdADz5bDqOAD+Gfv8yoahZqqkMb3G+gcWRcG85yiIoKEH5VMLnD9UoxbDfIZPeMEAAAA=",
+        "alt": {
+          "tr": "Pirinç teraslarının arasından geçen patika",
+          "en": "A path winding between the rice terraces"
+        },
+        "credit": {
+          "author": "Philip Nalangan",
+          "license": "CC BY 4.0",
+          "source": "https://commons.wikimedia.org/wiki/File:Tegallalang_Rice_Terraces_Bali_1.jpg"
+        }
+      },
+      {
+        "url": "/images/tours/bali-rice-fields.jpg",
+        "blurDataURL": "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAACwAQCdASoMAAgAAwBSJaACdADbUj4AAP7Q+qaHGTaARJRwCj/01K2r6NQUB1Q5ci3mhfk261BiZeAA",
+        "alt": {
+          "tr": "Bali'de basamak basamak uzanan pirinç tarlaları",
+          "en": "Stepped rice fields stretching across Bali"
+        },
+        "credit": {
+          "author": "Vyacheslav Argenberg",
+          "license": "CC BY 4.0",
+          "source": "https://commons.wikimedia.org/wiki/File:Rice_terraces%2C_Bali.jpg"
+        }
+      }
+    ],
+    "highlights": [
+      {
+        "tr": "Villa konaklaması",
+        "en": "Villa stay"
+      },
+      {
+        "tr": "Batur gün doğumu",
+        "en": "Batur sunrise"
+      },
+      {
+        "tr": "Yemek atölyesi",
+        "en": "Cooking class"
+      }
+    ],
+    "included": [
+      {
+        "tr": "7 gece villa konaklaması",
+        "en": "7 nights in a villa"
+      },
+      {
+        "tr": "Kahvaltı ve yemek atölyesi",
+        "en": "Breakfast and the cooking class"
+      },
+      {
+        "tr": "Ada içi ulaşım",
+        "en": "Transport around the island"
+      },
+      {
+        "tr": "Batur yürüyüşü rehberi",
+        "en": "A guide for the Batur hike"
+      }
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": {
+          "tr": "Denpasar'dan Ubud'a",
+          "en": "From Denpasar to Ubud"
+        },
+        "description": {
+          "tr": "Havalimanı transferi, villaya yerleşme ve akşam pazarında ilk yemek.",
+          "en": "Airport transfer, settling into the villa and a first meal at the night market."
+        }
+      },
+      {
+        "day": 2,
+        "title": {
+          "tr": "Tegallalang terasları",
+          "en": "Tegallalang terraces"
+        },
+        "description": {
+          "tr": "Sabah erken teraslarda yürüyüş, öğleden sonra serbest.",
+          "en": "An early walk through the terraces, with a free afternoon."
+        }
+      },
+      {
+        "day": 3,
+        "title": {
+          "tr": "Batur gün doğumu",
+          "en": "Batur sunrise"
+        },
+        "description": {
+          "tr": "Gece 02.00'de kalkış, zirvede gün doğumu ve dönüşte kaplıca molası.",
+          "en": "A 2 am start, sunrise at the summit and a hot spring stop on the way back."
+        }
+      },
+      {
+        "day": 4,
+        "title": {
+          "tr": "Yemek atölyesi",
+          "en": "Cooking class"
+        },
+        "description": {
+          "tr": "Pazardan alışveriş, ardından yerel bir mutfakta tam günlük atölye.",
+          "en": "Shopping at the market, then a full day in a local kitchen."
+        }
+      },
+      {
+        "day": 5,
+        "title": {
+          "tr": "Serbest gün",
+          "en": "Free day"
+        },
+        "description": {
+          "tr": "Program yok. İsteyen bisiklete biniyor, isteyen villada kalıyor.",
+          "en": "Nothing planned. Rent a bike or stay at the villa."
+        }
+      },
+      {
+        "day": 6,
+        "title": {
+          "tr": "Sidemen vadisi",
+          "en": "The Sidemen valley"
+        },
+        "description": {
+          "tr": "Daha sakin bir vadide yürüyüş ve dokuma atölyesi ziyareti.",
+          "en": "A walk in a quieter valley and a visit to a weaving workshop."
+        }
+      },
+      {
+        "day": 7,
+        "title": {
+          "tr": "Sahil günü",
+          "en": "Beach day"
+        },
+        "description": {
+          "tr": "Güney sahillerinde yüzme ve gün batımı.",
+          "en": "Swimming on the southern beaches and a sunset."
+        }
+      },
+      {
+        "day": 8,
+        "title": {
+          "tr": "Dönüş",
+          "en": "Departure"
+        },
+        "description": {
+          "tr": "Son kahvaltı ve havalimanına transfer.",
+          "en": "A last breakfast and the transfer to the airport."
+        }
+      }
+    ]
+  }
+]

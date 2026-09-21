@@ -1,0 +1,201 @@
+// Gezdir Beni — booking backend.
+//
+// Conventions:
+// - Money is stored in MINOR UNITS (kuruş). 18.900 TRY -> 1890000. Never store floats.
+// - SQLite has no enums, so status-like columns are String and validated with zod at
+//   the edge. The allowed values are listed next to each column.
+// - Localised text is stored as one column per language (…Tr / …En), mirroring the
+//   dictionary rule on the frontend: a missing translation must be impossible to miss.
+
+generator client {
+  provider            = "prisma-client"
+  output              = "../src/generated/prisma"
+  // Node runs these files directly, and its ESM resolver needs explicit extensions.
+  moduleFormat        = "esm"
+  importFileExtension = "ts"
+  runtime             = "nodejs"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Tour {
+  id          String  @id @default(cuid())
+  slug        String  @unique
+  /// sunrise | sea | forest | city | sand — decorative colour behind the photo
+  accent      String
+  /// bestseller | new | scarce
+  badgeTone   String?
+  isPublished Boolean @default(true)
+  sortOrder   Int     @default(0)
+
+  titleTr       String
+  titleEn       String
+  destinationTr String
+  destinationEn String
+  countryTr     String
+  countryEn     String
+  summaryTr     String
+  summaryEn     String
+  descriptionTr String
+  descriptionEn String
+  badgeTr       String?
+  badgeEn       String?
+
+  durationDays   Int
+  durationNights Int
+  maxGroupSize   Int
+  rating         Float
+  reviewCount    Int
+  /// Price per person, in minor units.
+  priceMinor     Int
+  currency       String @default("TRY")
+
+  images       TourImage[]
+  highlights   TourHighlight[]
+  included     TourIncluded[]
+  itinerary    TourItineraryDay[]
+  departures   Departure[]
+  reservations Reservation[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([isPublished, sortOrder])
+}
+
+model TourImage {
+  id     String @id @default(cuid())
+  tourId String
+  tour   Tour   @relation(fields: [tourId], references: [id], onDelete: Cascade)
+
+  /// cover | gallery
+  role        String
+  position    Int     @default(0)
+  url         String
+  blurDataUrl String?
+  altTr       String
+  altEn       String
+
+  /// Photos are CC licensed; attribution must survive every migration.
+  creditAuthor  String?
+  creditLicense String?
+  creditSource  String?
+
+  @@index([tourId, role, position])
+}
+
+model TourHighlight {
+  id       String @id @default(cuid())
+  tourId   String
+  tour     Tour   @relation(fields: [tourId], references: [id], onDelete: Cascade)
+  position Int    @default(0)
+  textTr   String
+  textEn   String
+
+  @@index([tourId, position])
+}
+
+model TourIncluded {
+  id       String @id @default(cuid())
+  tourId   String
+  tour     Tour   @relation(fields: [tourId], references: [id], onDelete: Cascade)
+  position Int    @default(0)
+  textTr   String
+  textEn   String
+
+  @@index([tourId, position])
+}
+
+model TourItineraryDay {
+  id            String @id @default(cuid())
+  tourId        String
+  tour          Tour   @relation(fields: [tourId], references: [id], onDelete: Cascade)
+  day           Int
+  titleTr       String
+  titleEn       String
+  descriptionTr String
+  descriptionEn String
+
+  @@unique([tourId, day])
+}
+
+/// One departure date of a tour. Seats are counted here, not on the reservation,
+/// so availability is a single number that a transaction can guard.
+model Departure {
+  id     String @id @default(cuid())
+  tourId String
+  tour   Tour   @relation(fields: [tourId], references: [id], onDelete: Cascade)
+
+  departsOn   DateTime
+  returnsOn   DateTime?
+  capacity    Int
+  /// Kept in step with reservations inside a transaction; never written by hand.
+  seatsBooked Int       @default(0)
+  /// Overrides the tour price for this date when set (minor units).
+  priceMinor  Int?
+  /// open | closed | cancelled
+  status      String    @default("open")
+
+  reservations Reservation[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([tourId, departsOn])
+  @@index([status, departsOn])
+}
+
+/// A guest booking. There are no user accounts: the reference plus the e-mail address
+/// is what lets someone find their own reservation again.
+model Reservation {
+  id        String @id @default(cuid())
+  /// Human readable, shown to the guest: GB-7K3M2Q
+  reference String @unique
+  /// pending | confirmed | cancelled
+  status    String @default("pending")
+
+  tourId      String
+  tour        Tour      @relation(fields: [tourId], references: [id])
+  departureId String
+  departure   Departure @relation(fields: [departureId], references: [id])
+
+  travellers Int
+
+  fullName String
+  email    String
+  phone    String
+  note     String?
+
+  addressLine1 String
+  addressLine2 String?
+  city         String
+  postalCode   String
+  /// ISO 3166-1 alpha-2, upper case.
+  country      String
+
+  /// Snapshot of the price at booking time, in minor units. Later price changes on the
+  /// tour must never rewrite what the guest agreed to pay.
+  unitPriceMinor Int
+  totalMinor     Int
+  currency       String @default("TRY")
+
+  /// Dummy payment. Card numbers and CVV are NEVER stored or logged — only the brand
+  /// and the last four digits, which is what a real PSP would hand back.
+  /// unpaid | paid | failed
+  paymentStatus String    @default("unpaid")
+  /// card (only option today)
+  paymentMethod String?
+  cardBrand     String?
+  cardLast4     String?
+  paidAt        DateTime?
+
+  cancelledAt DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@index([email])
+  @@index([status, createdAt])
+  @@index([departureId])
+}

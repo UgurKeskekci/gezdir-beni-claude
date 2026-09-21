@@ -22,10 +22,7 @@ const ITEM_ICONS = [
 
 export function WhyUs({ dictionary }: { dictionary: Dictionary["why"] }) {
   return (
-    <section
-      id="why"
-      className="border-border bg-surface-muted/40 scroll-mt-24 border-y py-24 sm:py-32"
-    >
+    <section id="why" className="bg-surface-muted scroll-mt-24 py-24 sm:py-32">
       <Container>
         <Reveal>
           <SectionHeading
@@ -36,7 +33,7 @@ export function WhyUs({ dictionary }: { dictionary: Dictionary["why"] }) {
           />
         </Reveal>
 
-        <ul className="border-border bg-border mt-16 grid gap-px overflow-hidden rounded-3xl border sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {dictionary.items.map((item, index) => {
             const Icon = ITEM_ICONS[index] ?? UsersIcon;
             return (
@@ -45,7 +42,7 @@ export function WhyUs({ dictionary }: { dictionary: Dictionary["why"] }) {
                 key={item.title}
                 delay={index * 70}
                 distance={16}
-                className="group bg-background hover:bg-surface relative p-8 transition-colors duration-300"
+                className="group card-soft hover:border-primary/30 hover:shadow-card-hover relative overflow-hidden rounded-3xl p-8 transition-[transform,border-color,box-shadow] duration-300 ease-[var(--ease-out-expo)] hover:-translate-y-1"
               >
                 <span
                   aria-hidden="true"

@@ -27,11 +27,11 @@ export function HowItWorks({ dictionary }: { dictionary: Dictionary["how"] }) {
                 as="li"
                 key={step.title}
                 delay={index * 90}
-                className="border-border bg-surface/60 hover:border-primary/40 hover:bg-surface group relative overflow-hidden rounded-3xl border p-7 transition-colors duration-300"
+                className="card-soft hover:border-primary/30 hover:shadow-card-hover group relative overflow-hidden rounded-3xl p-7 transition-[transform,border-color,box-shadow] duration-300 ease-[var(--ease-out-expo)] hover:-translate-y-1"
               >
                 <span
                   aria-hidden="true"
-                  className="font-display text-border-strong/60 group-hover:text-primary/35 absolute top-4 right-6 text-5xl font-semibold transition-colors duration-300"
+                  className="font-display text-primary/10 group-hover:text-primary/25 absolute top-4 right-6 text-5xl font-semibold transition-colors duration-300"
                 >
                   {String(index + 1).padStart(2, "0")}
                 </span>

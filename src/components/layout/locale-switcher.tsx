@@ -54,7 +54,7 @@ export function LocaleSwitcher({
             className={cn(
               "relative rounded-full px-2.5 py-1 text-xs font-medium uppercase transition-colors duration-200",
               active
-                ? "text-background"
+                ? "text-primary-foreground"
                 : onPhoto
                   ? "text-white/75 hover:text-white"
                   : "text-muted-foreground hover:text-foreground",
@@ -64,7 +64,7 @@ export function LocaleSwitcher({
               // layoutId makes the pill slide between the two options.
               <motion.span
                 layoutId={indicatorId}
-                className="bg-foreground absolute inset-0 -z-10 rounded-full"
+                className="bg-primary absolute inset-0 -z-10 rounded-full"
                 transition={{ type: "spring", stiffness: 380, damping: 32 }}
               />
             ) : null}
